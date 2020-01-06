@@ -7,7 +7,7 @@
             {% endfor %}
             <p class="card-text">{{ project.description }}</p>
             {% if "project euler" in project.description.lower() %}
-                {% set url=url_for('blog.euler') %}
+                {% set url=url_for('euler.index') %}
             {% else %}
                 {% set url=project.url %}
             {% endif %}

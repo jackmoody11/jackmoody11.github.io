@@ -15,4 +15,4 @@ def index():
 
 @blog.route('/euler')
 def euler():
-    return render_template('project_euler/base.html')
+    return render_template('euler/base.html')
