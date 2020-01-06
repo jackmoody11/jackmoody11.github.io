@@ -1,32 +1,24 @@
 from flask import Flask, render_template
+from config import Config
 import json
 
-app = Flask(__name__)
-app.config['TEMPLATES_AUTO_RELOAD'] = True
 
+def create_app(config_class=Config):
+    app = Flask(__name__)
 
-@app.route('/index')
-@app.route('/')
-def index():
-    return render_template('home.html')
+    app.config.from_object(Config)
 
+    from main import main
+    from blog import blog
+    from project_euler import euler
 
-@app.route('/projects')
-def projects():
-    with open('./static/json/projects.json') as f:
-        _projects = json.load(f)['projects']
-    return render_template('projects.html', projects=_projects)
+    app.register_blueprint(main)
+    app.register_blueprint(blog)
+    app.register_blueprint(euler)
 
-
-@app.route('/blog')
-def blog():
-    return render_template('blog/base.html')
-
-
-@app.route('/euler')
-def euler():
-    return render_template('/project_euler/base.html')
+    return app
 
 
 if __name__ == '__main__':
+    app = create_app()
     app.run()
