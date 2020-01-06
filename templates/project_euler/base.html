@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="card mb-3" id="card-left-border">
+        <div class="card-body">
+            <h2 class="card-title"> About </h2>
+            <div class="col-md-10">
+                <p class="card-text"> Project Euler is a community where those who are interested in programming and/or
+                    solving math problems can put their knowledge to the test and learn more along the way. More info
+                    can be
+                    found at <a href="https://projecteuler.net">projecteuler.net</a>. </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-3" id="card-left-border">
+        <div class="card-body">
+            <h2 class="card-title"> Solutions </h2>
+            <div class="col-md-8">
+                <p class="card-text"> Below are some of my solutions in a few different languages. </p>
+            </div>
+            <div class="col-md-10">
+                {% include 'project_euler/_solution_table.html' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

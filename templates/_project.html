@@ -1,0 +1,19 @@
+<div class="col-md-4 mb-3">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ project.name }}</h5>
+            {% for tag in project.tags %}
+                <span class="badge badge-light">{{ tag }}</span>
+            {% endfor %}
+            <p class="card-text">{{ project.description }}</p>
+            {% if "project euler" in project.description.lower() %}
+                {% set url=url_for('euler') %}
+            {% else %}
+                {% set url=project.url %}
+            {% endif %}
+            <a href="{{ url }}" class="btn btn-primary">
+                Source
+            </a>
+        </div>
+    </div>
+</div>

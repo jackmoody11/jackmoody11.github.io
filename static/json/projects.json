@@ -1,0 +1,62 @@
+{
+  "projects": [
+    {
+      "name": "Stock Score",
+      "description": "A Python project to fetch stock financials/statistics and perform preliminary screens to aid in the stock selection process.",
+      "tags": [
+        "Python",
+        "Finance",
+        "Pandas"
+      ],
+      "url": "https://github.com/jackmoody11/stockscore"
+    },
+    {
+      "name": "SEC Edgar",
+      "description": "Download all companies periodic reports, filings and forms from EDGAR database.",
+      "tags": [
+        "Python",
+        "Finance",
+        "Scraping",
+        "BeautifulSoup"
+      ],
+      "url": "https://github.com/jackmoody11/sec-edgar"
+    },
+    {
+      "name": "Game of Life",
+      "description": "Conway's Game of Life implemented in Java.",
+      "tags": [
+        "Java",
+        "Cellular Automation",
+        "Multithreading",
+        "Swing"
+      ],
+      "url": "https://github.com/jackmoody11/game-of-life"
+    },
+    {
+      "name": "Project Euler",
+      "description": "Various Project Euler solutions implemented in Python, Java, and C.",
+      "tags": [
+        "Python",
+        "Java",
+        "C",
+        "Math",
+        "Dynamic Programming",
+        "Project Euler"
+      ],
+      "url": "https://github.com/jackmoody11/project-euler-solutions"
+    },
+    {
+      "name": "Machine Learning",
+      "description": "Some of my Jupyter notebooks as I learn about Machine Learning.",
+      "tags": [
+        "Python",
+        "Scikit-Learn",
+        "Tensorflow",
+        "Machine Learning",
+        "Regression",
+        "Classification"
+      ],
+      "url": "https://github.com/jackmoody11/mlearn"
+    }
+  ]
+}
