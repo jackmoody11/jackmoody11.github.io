@@ -10,7 +10,7 @@ def create_app(config_class=Config):
 
     from main import main
     from blog import blog
-    from project_euler import euler
+    from euler import euler
 
     app.register_blueprint(main)
     app.register_blueprint(blog)
