@@ -38,9 +38,12 @@
                     {% for solution in solutions %}
                         <tr>
 
-                            <th scope="row"><a
-                                    href="{{ url_for('euler.show', number='p{}'.format(solution.number.zfill(3))) |safe }}"
-                            >{{ solution.number }}</a>
+                            <th scope="row">
+                                {% if solution.python %}
+                                    <a
+                                            href="{{ url_for('euler.show', number='p{}'.format(solution.number.zfill(3))) |safe }}"
+                                    >{{ solution.number }}</a>
+                                {% endif %}
                             </th>
                             <td>{% if solution.python %}
                                 <i class="fa fa-check text-success" aria-hidden="true"></i> {% else %}

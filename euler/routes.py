@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template
 import json
+import requests
 import sys
 
 euler = Blueprint('euler', __name__)
@@ -7,7 +8,14 @@ euler = Blueprint('euler', __name__)
 
 @euler.route('/euler/solutions/<number>')
 def show(number):
-    return render_template('euler/solutions/{number}.html'.format(number=number))
+    """
+    Pass Python code fetched from GitHub
+    """
+    code = requests.get(
+            'https://raw.githubusercontent.com/jackmoody11/project-euler-solutions/master/python/{}.py'.format(
+                    number)).text
+    print(code)
+    return render_template('euler/solutions/{number}.html'.format(number=number), number=number, code=code)
 
 
 @euler.route('/euler')

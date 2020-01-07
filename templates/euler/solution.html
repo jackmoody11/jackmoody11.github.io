@@ -31,13 +31,15 @@
         <div class="card-body">
             <h5 class="card-title"> The Code </h5>
             <p class="card-text">
-            <pre>{% block code %} {% endblock %}</pre>
+            <pre><code>{{ code }}</code></pre>
         </div>
     </div>
 {% endblock %}
 
 {% block scripts %}
     <!-- MathJax -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
     <script type="text/javascript">
         MathJax.Hub.Config({
             "HTML-CSS": {linebreaks: {automatic: true, width: "container"}},
@@ -48,7 +50,7 @@
             tex2jax: {ignoreClass: "w1", processClass: "active|comments-content"}
         });
     </script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+
 
     <!-- highlight.js -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js"></script>
