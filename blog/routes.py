@@ -11,8 +11,3 @@ def show(page):
 @blog.route('/blog')
 def index():
     return render_template('blog/base.html')
-
-
-@blog.route('/euler')
-def euler():
-    return render_template('euler/base.html')

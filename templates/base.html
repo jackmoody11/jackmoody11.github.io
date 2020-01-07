@@ -13,6 +13,8 @@
     <link rel="icon"
           type="image/png"
           href="https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png">
+
+    {% block styles %} {% endblock %}
 </head>
 <body>
 
@@ -34,5 +36,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+
+{% block scripts %}{% endblock %}
 </body>
 </html>

@@ -1,4 +1,6 @@
 from flask import Blueprint, render_template
+import json
+import sys
 
 euler = Blueprint('euler', __name__)
 
@@ -10,4 +12,6 @@ def show(number):
 
 @euler.route('/euler')
 def index():
-    return render_template('euler/base.html')
+    with open('./static/json/euler_solutions.json') as f:
+        _solutions = json.load(f)['solutions']
+    return render_template('euler/base.html', solutions=_solutions)
