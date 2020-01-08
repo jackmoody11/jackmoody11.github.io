@@ -17,15 +17,16 @@
     {% block styles %} {% endblock %}
 </head>
 <body>
+<!-- https://www.freecodecamp.org/news/how-to-keep-your-footer-where-it-belongs-59c6aa05c59c/ -->
+<div id="page-container">
+    {% include 'includes/_navigation.html' %}
 
-{% include 'includes/_navigation2.html' %}
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
 
-<div class="container">
-    {% block content %}{% endblock %}
+    {% include 'includes/_footer.html' %}
 </div>
-
-{% include 'includes/_footer.html' %}
-
 <!-- Bootstrap -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
