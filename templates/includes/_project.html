@@ -1,5 +1,7 @@
 <div class="col-md-4 mb-3">
-    <div class="card">
+    <div class="card"
+         {% if project.starred %}id="card-border"{% endif %}
+    >
         <div class="card-body">
             <h5 class="card-title">{{ project.name }}</h5>
             {% for tag in project.tags %}

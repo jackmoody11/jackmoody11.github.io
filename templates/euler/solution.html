@@ -13,25 +13,45 @@
 
 {% block content %}
     <!-- Problem Statement -->
-    <div class="card mb-3" id="card-left-border">
-        <div class="card-body">
-            <h5 class="card-title"> {% block problem_title %} {% endblock %} </h5>
-            <p class="card-text"> {% block problem_text %} {% endblock %} </p>
+    <div class="row">
+        <div class="card mb-3" id="card-left-border">
+            <div class="card-body">
+                <h5 class="card-title"> {% block problem_title %} {% endblock %} </h5>
+                <p class="card-text"> {% block problem_text %} {% endblock %} </p>
+            </div>
         </div>
     </div>
     <!-- Solution (explained) -->
-    <div class="card mb-3" id="card-left-border">
-        <div class="card-body">
-            <h5 class="card-title"> The Idea </h5>
-            <p class="card-text"> {% block idea_text %} {% endblock %} </p>
+    <div class="row">
+        <div class="card mb-3" id="card-left-border">
+            <div class="card-body">
+                <h5 class="card-title"> The Idea </h5>
+                <p class="card-text"> {% block idea_text %} {% endblock %} </p>
+            </div>
         </div>
     </div>
     <!-- Solution (code) -->
-    <div class="card mb-3" id="card-left-border">
-        <div class="card-body">
-            <h5 class="card-title"> The Code </h5>
-            <p class="card-text">
-            <pre><code> {{ code }}</code></pre>
+    <div class="row">
+        <div class="card" id="card-left-border">
+            <div class="card-body">
+                <h5 class="card-title"> The Code </h5>
+                <p class="card-text">
+                <pre><code id="solution-code"></code></pre>
+            </div>
+        </div>
+    </div>
+    <!-- Notes for all solutions -->
+    <div class="row">
+        <div class="card mb-3" id="card-left-border">
+            <div class="card-body">
+                <div class="card-title"><h5>Notes</h5></div>
+                <div class="card-text">
+                    The full <code>utils</code> module can be found on <a
+                        href="https://github.com/jackmoody11/project-euler-solutions/tree/master/python/utils.py"
+                        target="_blank"><i
+                        class="fab fa-github"></i> GitHub here</a>.
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
@@ -52,9 +72,16 @@
     </script>
 
 
-    <!-- highlight.js -->
+    <!-- highlight.js and get code -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js"></script>
     <script type="text/javascript">
-        hljs.initHighlightingOnLoad();
+        let url = 'https://raw.githubusercontent.com/jackmoody11/project-euler-solutions/master/python/' + '{{ number }}'
+            + '.py';
+        fetch(url)
+            .then(r => r.text())
+            .then(data => {
+                document.getElementById('solution-code').innerHTML = data;
+                hljs.initHighlighting();
+            });
     </script>
 {% endblock %}

@@ -8,7 +8,8 @@
         "Finance",
         "Pandas"
       ],
-      "url": "https://github.com/jackmoody11/stockscore"
+      "url": "https://github.com/jackmoody11/stockscore",
+      "starred": false
     },
     {
       "name": "SEC Edgar",
@@ -19,7 +20,8 @@
         "Scraping",
         "BeautifulSoup"
       ],
-      "url": "https://github.com/jackmoody11/sec-edgar"
+      "url": "https://github.com/jackmoody11/sec-edgar",
+      "starred": false
     },
     {
       "name": "Game of Life",
@@ -30,7 +32,8 @@
         "Multithreading",
         "Swing"
       ],
-      "url": "https://github.com/jackmoody11/game-of-life"
+      "url": "https://github.com/jackmoody11/game-of-life",
+      "starred": false
     },
     {
       "name": "Project Euler",
@@ -43,7 +46,8 @@
         "Dynamic Programming",
         "Project Euler"
       ],
-      "url": "https://github.com/jackmoody11/project-euler-solutions"
+      "url": "https://github.com/jackmoody11/project-euler-solutions",
+      "starred": true
     },
     {
       "name": "Machine Learning",
@@ -56,7 +60,8 @@
         "Regression",
         "Classification"
       ],
-      "url": "https://github.com/jackmoody11/mlearn"
+      "url": "https://github.com/jackmoody11/mlearn",
+      "starred": false
     }
   ]
 }
