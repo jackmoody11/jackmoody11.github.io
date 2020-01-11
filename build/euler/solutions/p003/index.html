@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+    Project Euler #
+ - Jack Moody</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/styles.css">
+
+    <!-- Replace this favicon!!! -->
+    <link rel="icon"
+          type="image/png"
+          href="https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png">
+
+    
+    <!-- highlight.js -->
+    <!-- Change word before .min.css to change style of code -->
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/github.min.css">
+
+
+</head>
+<body>
+<!-- https://www.freecodecamp.org/news/how-to-keep-your-footer-where-it-belongs-59c6aa05c59c/ -->
+<div id="page-container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+    <a class="nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+    <a class="nav-link" href="/projects/">Projects</a>
+    <a class="nav-link" href="/blog/">Blog</a>
+</nav>
+
+    <div class="container">
+        
+    <!-- Problem Statement -->
+    <div class="row">
+        <div class="card mb-3" id="card-left-border">
+            <div class="card-body">
+                <h5 class="card-title"> Problem 3 - Largest prime factor </h5>
+                <p class="card-text"> 
+    The prime factors of 13195 are 5, 7, 13 and 29. What is the largest prime factor of the number 600851475143 ?
+ </p>
+            </div>
+        </div>
+    </div>
+    <!-- Solution (explained) -->
+    <div class="row">
+        <div class="card mb-3" id="card-left-border">
+            <div class="card-body">
+                <h5 class="card-title"> The Idea </h5>
+                <p class="card-text"> 
+    A number is said to be prime if the only natural numbers that divide itself are 1 and itself. By the Fundamental
+    Theorem of Arithmetic, every number has a unique representation as a product of primes (up to permutations of the
+    prime products). Therefore, as long as 600,851,475,143 is not prime,
+    <a href="https://math.stackexchange.com/questions/63276/is-a-prime-factor-of-a-number-always-less-than-its-square-root">at
+        least all but one of its prime divisors must be less than \(\sqrt{600,851,475,143}\)</a>. That is, if we keep
+    dividing the target of 600,851,475,143 by its prime
+    divisors
+    that are less than its square root, we will either get that the left over is greater than the max divisor we divided
+    by and it is prime, or the max prime divisor found in the loop is the actual max divisor.
+ </p>
+            </div>
+        </div>
+    </div>
+    <!-- Solution (code) -->
+    <div class="row">
+        <div class="card" id="card-left-border">
+            <div class="card-body">
+                <h5 class="card-title"> The Code </h5>
+                <p class="card-text">
+                <pre><code id="solution-code"></code></pre>
+            </div>
+        </div>
+    </div>
+    <!-- Notes for all solutions -->
+    <div class="row">
+        <div class="card mb-3" id="card-left-border">
+            <div class="card-body">
+                <div class="card-title"><h5>Notes</h5></div>
+                <div class="card-text">
+                    The full <code>utils</code> module can be found on <a
+                        href="https://github.com/jackmoody11/project-euler-solutions/tree/master/python/utils.py"
+                        target="_blank"><i
+                        class="fab fa-github"></i> GitHub here</a>.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <div id="footer-spacer"></div>
+    <footer class="footer">
+    <div class="row text-center">
+        <div class="col-6 offset-3">
+            <span class="text-muted">&copy; Jack Moody 2020</span>
+        </div>
+        <div class="col-3 social-icons">
+            <a href="https://github.com/jackmoody11" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/jacklmoody" target="_blank">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+    </div>
+</footer>
+</div>
+<!-- Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+
+    <!-- MathJax -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script type="text/javascript">
+        MathJax.Hub.Config({
+            "HTML-CSS": {linebreaks: {automatic: true, width: "container"}},
+            displayAlign: "center",
+            extensions: ["tex2jax.js", "MathMenu.js", "MathZoom.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            TeX: {extensions: ["AMSmath.js", "AMSsymbols.js", "noErrors.js", "noUndefined.js"]},
+            tex2jax: {ignoreClass: "w1", processClass: "active|comments-content"}
+        });
+    </script>
+
+
+    <!-- highlight.js and get code -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js"></script>
+    <script type="text/javascript">
+        let url = 'https://raw.githubusercontent.com/jackmoody11/project-euler-solutions/master/python/' + 'p003'
+            + '.py';
+        fetch(url)
+            .then(r => r.text())
+            .then(data => {
+                document.getElementById('solution-code').innerHTML = data;
+                hljs.initHighlighting();
+            });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+{
+  "solutions": [
+    {
+      "number": "1",
+      "python": true,
+      "java": true,
+      "c": true
+    },
+    {
+      "number": "2",
+      "python": true,
+      "java": true,
+      "c": true
+    },
+    {
+      "number": "3",
+      "python": true,
+      "java": true,
+      "c": true
+    },
+    {
+      "number": "4",
+      "python": true,
+      "java": true,
+      "c": true
+    },
+    {
+      "number": "5",
+      "python": true,
+      "java": false,
+      "c": true
+    },
+    {
+      "number": "6",
+      "python": true,
+      "java": true,
+      "c": true
+    },
+    {
+      "number": "7",
+      "python": true,
+      "java": false,
+      "c": true
+    },
+    {
+      "number": "8",
+      "python": true,
+      "java": false,
+      "c": true
+    },
+    {
+      "number": "9",
+      "python": true,
+      "java": true,
+      "c": true
+    },
+    {
+      "number": "10",
+      "python": true,
+      "java": false,
+      "c": true
+    },
+    {
+      "number": "11",
+      "python": true,
+      "java": false,
+      "c": false
+    },
+    {
+      "number": "12",
+      "python": true,
+      "java": false,
+      "c": true
+    },
+    {
+      "number": "13",
+      "python": true,
+      "java": false,
+      "c": false
+    },
+    {
+      "number": "14",
+      "python": true,
+      "java": false,
+      "c": true
+    },
+    {
+      "number": "15",
+      "python": true,
+      "java": false,
+      "c": true
+    },
+    {
+      "number": "16",
+      "python": true,
+      "java": false,
+      "c": false
+    },
+    {
+      "number": "17",
+      "python": true,
+      "java": false,
+      "c": false
+    },
+    {
+      "number": "18",
+      "python": true,
+      "java": false,
+      "c": false
+    },
+    {
+      "number": "19",
+      "python": true,
+      "java": false,
+      "c": false
+    },
+    {
+      "number": "20",
+      "python": true,
+      "java": false,
+      "c": false
+    }
+  ]
+}
