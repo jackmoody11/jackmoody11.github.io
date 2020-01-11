@@ -8,6 +8,6 @@ def show(page):
     return render_template('/blog/{page}.html'.format(page=page))
 
 
-@blog.route('/blog')
+@blog.route('/blog/')
 def index():
     return render_template('blog/base.html')

@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from flask_frozen import Freezer
 from config import Config
 import json
 
@@ -16,9 +17,10 @@ def create_app(config_class=Config):
     app.register_blueprint(blog)
     app.register_blueprint(euler)
 
-    return app
+    return Freezer(app)
 
 
 if __name__ == '__main__':
     app = create_app()
+    app.freeze()
     app.run(debug=True)
