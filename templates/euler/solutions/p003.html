@@ -1,0 +1,18 @@
+{% extends 'euler/solution.html' %}
+{% block problem_title %}Problem 3 - Largest prime factor{% endblock %}
+
+{% block problem_text %}
+    The prime factors of 13195 are 5, 7, 13 and 29. What is the largest prime factor of the number 600851475143 ?
+{% endblock %}
+
+{% block idea_text %}
+    A number is said to be prime if the only natural numbers that divide itself are 1 and itself. By the Fundamental
+    Theorem of Arithmetic, every number has a unique representation as a product of primes (up to permutations of the
+    prime products). Therefore, as long as 600,851,475,143 is not prime,
+    <a href="https://math.stackexchange.com/questions/63276/is-a-prime-factor-of-a-number-always-less-than-its-square-root">at
+        least all but one of its prime divisors must be less than \(\sqrt{600,851,475,143}\)</a>. That is, if we keep
+    dividing the target of 600,851,475,143 by its prime
+    divisors
+    that are less than its square root, we will either get that the left over is greater than the max divisor we divided
+    by and it is prime, or the max prime divisor found in the loop is the actual max divisor.
+{% endblock %}
