@@ -6,7 +6,7 @@ script:
 deploy:
   provider: script
   skip_cleanup: true
-  script: python app.py deploy --no-freeze --push
+  script: python app.py deploy --no-freeze --no-push
   on:
     branch: master
     repo: jackmoody11/jackmoody11.github.io
