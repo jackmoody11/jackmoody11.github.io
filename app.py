@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask
 from config import Config
 
 
@@ -16,9 +16,3 @@ def create_app(config_class=Config):
     app.register_blueprint(euler)
 
     return app
-
-
-if __name__ == '__main__':
-    from elsa import cli
-
-    cli(create_app(), base_url='https://jackmoody11.github.io')
