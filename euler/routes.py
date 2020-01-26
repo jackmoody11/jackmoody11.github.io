@@ -6,7 +6,8 @@ euler = Blueprint('euler', __name__)
 
 @euler.route('/euler/solutions/<number>/')
 def show(number):
-    return render_template('euler/solutions/{number}.html'.format(number=number), number=number)
+    return render_template('euler/solutions/{number}.html'.format(
+            number=number), number=number)
 
 
 @euler.route('/euler/')
