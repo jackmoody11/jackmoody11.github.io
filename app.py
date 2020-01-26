@@ -3,23 +3,23 @@ import os
 
 from flask import Flask
 from flask_frozen import Freezer
-from personal_site.config import Config
+from config import Config
 
 
 def create_app(config_class=Config):
-    app = Flask(__name__)
+    _app = Flask(__name__)
 
-    app.config.from_object(config_class)
+    _app.config.from_object(config_class)
 
-    from personal_site.blog import blog
-    from personal_site.euler import euler
-    from personal_site.main import main
+    from blog import blog
+    from euler import euler
+    from main import main
 
-    app.register_blueprint(main)
-    app.register_blueprint(blog)
-    app.register_blueprint(euler)
+    _app.register_blueprint(main)
+    _app.register_blueprint(blog)
+    _app.register_blueprint(euler)
 
-    return app
+    return _app
 
 
 app = create_app()

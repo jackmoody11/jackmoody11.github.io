@@ -1,1 +1,1 @@
-from personal_site.main.routes import main  # noqa: F401
+from main.routes import main  # noqa: F401

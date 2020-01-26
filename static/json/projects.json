@@ -62,6 +62,21 @@
       ],
       "url": "https://github.com/jackmoody11/mlearn",
       "starred": false
+    },
+    {
+      "name": "Personal Site",
+      "description": "The source code for this site.",
+      "tags": [
+        "Python",
+        "Flask",
+        "Javascript",
+        "AJAX",
+        "HTML",
+        "CSS",
+        "Bootstrap 4"
+      ],
+      "url": "https://github.com/jackmoody11/jackmoody11.github.io",
+      "starred": false
     }
   ]
 }
