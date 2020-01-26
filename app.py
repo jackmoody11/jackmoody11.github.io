@@ -39,15 +39,16 @@ def build():
 
 
 @app.cli.command('deploy')
-@click.argument('push')
-def deploy(push=True):
+def deploy():
     """Deploys the site to GitHub Pages."""
-    build()
+    print('Freezing it up! Brr...')
+    freezer.freeze()
+    print('...done')
     print('Deploying to GitHub pages...')
     command = 'ghp-import -b master -m "[deploy] Build" '
-    if push:
-        command += '-p '
+    command += '-p '
     command += build_dir
+    print(build_dir)
     os.system(command)
     print('...done')
 

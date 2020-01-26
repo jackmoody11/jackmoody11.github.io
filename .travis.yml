@@ -9,3 +9,8 @@ script:
   - pip install flake8
   - flake8 --version
   - flake8 .
+deploy:
+  provider: script
+  script: flask deploy
+  on:
+    branch: app
