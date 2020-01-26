@@ -1,7 +1,11 @@
-from flask import Blueprint, render_template
 import json
+import os
 
-main = Blueprint('main', __name__)
+from flask import Blueprint, render_template
+
+main_directory = os.path.dirname(os.path.abspath(__file__))
+template_directory = os.path.join(main_directory, 'templates')
+main = Blueprint('main', __name__, template_folder=template_directory)
 
 
 @main.route('/index/')

@@ -1,7 +1,11 @@
-from flask import Blueprint, render_template
 import json
+import os
 
-euler = Blueprint('euler', __name__)
+from flask import Blueprint, render_template
+
+euler_directory = os.path.dirname(os.path.abspath(__file__))
+template_directory = os.path.join(euler_directory, 'templates')
+euler = Blueprint('euler', __name__, template_folder=template_directory)
 
 
 @euler.route('/euler/solutions/<number>/')

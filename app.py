@@ -43,7 +43,7 @@ def deploy():
     print('Freezing it up! Brr...')
     freezer.freeze()
     print('...done')
-    print('Deploying to GitHub pages...')
+    print('Deploying to GitHub templates...')
     command = 'ghp-import -b master -m "[deploy] Build" '
     command += '-p '
     command += build_dir
