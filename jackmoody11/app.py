@@ -45,7 +45,7 @@ def deploy():
     print('...done')
     print('Deploying to GitHub templates...')
     command = 'ghp-import -b master -m "[deploy] Build" '
-    command += '-p '
+    command += '-p -f '  # Force push
     command += build_dir
     print(build_dir)
     os.system(command)

@@ -5,6 +5,7 @@ install:
   - pip install -qq flake8
   - python setup.py install
   - rm -r dist/ Jack_Moody_s_Website.egg-info/
+  - export FLASK_APP=jackmoody11/app.py
 script:
   - set -e
   - pip install flake8
