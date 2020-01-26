@@ -16,6 +16,7 @@ def index():
 
 @main.route('/projects/')
 def projects():
-    with open('./static/json/projects.json') as f:
+    print(os.getcwd())
+    with open('jackmoody11/static/json/projects.json') as f:
         _projects = json.load(f)['projects']
     return render_template('projects.html', projects=_projects)

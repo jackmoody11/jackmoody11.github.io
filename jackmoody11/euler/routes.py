@@ -16,6 +16,6 @@ def show(number):
 
 @euler.route('/euler/')
 def index():
-    with open('./static/json/euler_solutions.json') as f:
+    with open('jackmoody11/static/json/euler_solutions.json') as f:
         _solutions = json.load(f)['solutions']
     return render_template('euler/base.html', solutions=_solutions)
