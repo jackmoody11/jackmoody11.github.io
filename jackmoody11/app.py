@@ -2,7 +2,7 @@ import os
 
 from flask import Flask
 from flask_frozen import Freezer
-from config import Config
+from jackmoody11.config import Config
 
 
 def create_app(config_class=Config):
@@ -10,9 +10,9 @@ def create_app(config_class=Config):
 
     _app.config.from_object(config_class)
 
-    from blog import blog
-    from euler import euler
-    from main import main
+    from jackmoody11.blog import blog
+    from jackmoody11.euler import euler
+    from jackmoody11.main import main
 
     _app.register_blueprint(main)
     _app.register_blueprint(blog)

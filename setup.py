@@ -42,7 +42,7 @@ with codecs.open('README.md', encoding='utf-8') as f:
 
 setup(
         name='Jack Moody\'s Website',
-        version=find_version('__init__.py'),
+        version=find_version('jackmoody11', '__init__.py'),
         long_description=LONG_DESCRIPTION,
         packages=find_packages(exclude=['build', 'contrib', 'docs', 'tests*']),
         url='https://github.com/jackmoody11/jackmoody11.github.io',
