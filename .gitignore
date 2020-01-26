@@ -6,3 +6,6 @@ __pycache__/
 # Editors
 .idea/
 .vscode/
+
+# Build files
+build/

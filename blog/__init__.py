@@ -1,1 +1,1 @@
-from blog.routes import blog
+from personal_site.blog.routes import blog
