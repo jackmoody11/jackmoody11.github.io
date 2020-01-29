@@ -5,6 +5,7 @@ from flask import Blueprint, render_template
 
 euler_directory = os.path.dirname(os.path.abspath(__file__))
 template_directory = os.path.join(euler_directory, 'templates')
+static_directory = os.path.join(euler_directory, 'static')
 euler = Blueprint('euler', __name__, template_folder=template_directory)
 
 
@@ -16,6 +17,6 @@ def show(number):
 
 @euler.route('/euler/')
 def index():
-    with open('jackmoody11/static/json/euler_solutions.json') as f:
+    with open(os.path.join(static_directory, 'json', 'euler_solutions.json')) as f:
         _solutions = json.load(f)['solutions']
     return render_template('euler/base.html', solutions=_solutions)

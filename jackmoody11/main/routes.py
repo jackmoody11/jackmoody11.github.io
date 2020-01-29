@@ -5,6 +5,7 @@ from flask import Blueprint, render_template
 
 main_directory = os.path.dirname(os.path.abspath(__file__))
 template_directory = os.path.join(main_directory, 'templates')
+static_directory = os.path.join(main_directory, 'static')
 main = Blueprint('main', __name__, template_folder=template_directory)
 
 
@@ -17,6 +18,6 @@ def index():
 @main.route('/projects/')
 def projects():
     print(os.getcwd())
-    with open('jackmoody11/static/json/projects.json') as f:
+    with open(os.path.join(static_directory, 'json', 'projects.json')) as f:
         _projects = json.load(f)['projects']
     return render_template('projects.html', projects=_projects)
