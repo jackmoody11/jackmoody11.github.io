@@ -44,3 +44,7 @@
     position: relative;
     min-height: 100vh;
 }
+
+#jackmoody_logo {
+    fill: #007bff;
+}

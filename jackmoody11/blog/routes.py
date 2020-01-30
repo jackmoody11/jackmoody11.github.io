@@ -1,12 +1,10 @@
 import datetime
 import os
 
-# from jackmoody11.app import pages
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, current_app
+from flask_flatpages import FlatPages
 
-blog_directory = os.path.dirname(os.path.abspath(__file__))
-template_directory = os.path.join(blog_directory, 'templates')
-blog = Blueprint('blog', __name__, template_folder=template_directory)
+blog = Blueprint('blog', __name__, template_folder='templates/blog', static_folder='static')
 
 
 def _ensure_datetime(val):
@@ -24,7 +22,9 @@ def _ensure_datetime(val):
 
 @blog.route('/<path:path>/')
 def show(path):
-    return render_template('/blog/{path}.html'.format(path=path))
+    pages = FlatPages(current_app)
+    page = pages.get_or_404(path)
+    return render_template('post.html', page=page)
 
 
 @blog.route('/blog/')
@@ -32,8 +32,9 @@ def index():
     def sort_key(page):
         return _ensure_datetime(page.meta['updated'])
 
-    # pages_sorted = [page for page in sorted(pages,
-    #                                         reverse=True,
-    #                                         key=sort_key)]
-    # return render_template('blog/base.html', pages=pages_sorted)
-    return 'Nothing'
+    pages = FlatPages(current_app)
+
+    pages_sorted = [page for page in sorted(pages,
+                                            reverse=True,
+                                            key=sort_key)]
+    return render_template('blog/base.html', pages=pages_sorted)
