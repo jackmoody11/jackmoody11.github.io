@@ -34,3 +34,7 @@ class TestRoutes:
     def test_get_blog_home(self, client):
         response = client.get('/blog/')
         assert response.status_code == 200
+
+    def test_404(self, client):
+        response = client.get('/pagethatdoesntexist/')
+        assert response.status_code == 404
