@@ -30,3 +30,7 @@ class TestRoutes:
     def test_get_euler_p001_solution(self, client):
         response = client.get('/euler/solutions/p001/')
         assert response.status_code == 200
+
+    def test_get_blog_home(self, client):
+        response = client.get('/blog/')
+        assert response.status_code == 200
