@@ -9,3 +9,5 @@ class Config:
     FREEZER_DESTINATION = os.path.join(PROJECT_ROOT, 'build')
     BASE_URL = "https://jackmoody11.github.io"
     GITHUB_REPO = "https://github.com/jackmoody11/jackmoody11.github.io"
+    FLATPAGES_ROOT = os.path.join(PROJECT_ROOT, 'jackmoody11', 'blog', 'pages')
+    FLATPAGES_EXTENSION = '.md'
