@@ -1,8 +1,12 @@
 import os
 
-from flask import Flask
+from flask import Flask, render_template
 from flask_frozen import Freezer
 from jackmoody11.config import Config
+
+
+def error_handler(e):
+    return render_template('404.html'), 404
 
 
 def create_app(config_class=Config):
@@ -12,11 +16,12 @@ def create_app(config_class=Config):
 
     from jackmoody11.blog import blog
     from jackmoody11.euler import euler
-    from jackmoody11.main import main
+    from jackmoody11.home import home
 
-    _app.register_blueprint(main)
+    _app.register_blueprint(home)
     _app.register_blueprint(blog)
     _app.register_blueprint(euler)
+    _app.register_error_handler(404, error_handler)
 
     return _app
 
@@ -24,6 +29,15 @@ def create_app(config_class=Config):
 app = create_app()
 freezer = Freezer(app)
 build_dir = app.config['FREEZER_DESTINATION']
+
+
+@app.route('/<path:path>/')
+def page(path):
+    page = pages.get_or_404(path)
+    dep_list = page.meta.get('deps', [])
+    dep_pages = [pages.get(dep) for dep in dep_list]
+    template = page.meta.get('template', 'page.html')
+    return render_template(template, page=page, deps=dep_pages)
 
 
 @app.cli.command('build')
@@ -47,7 +61,6 @@ def deploy():
     command = 'ghp-import -b master -m "[deploy] Build" '
     command += '-p -f '  # Force push
     command += build_dir
-    print(build_dir)
     os.system(command)
     print('...done')
 
