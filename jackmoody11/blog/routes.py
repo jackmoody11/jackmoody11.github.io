@@ -1,7 +1,6 @@
 import datetime as dt
-import os
 
-from flask import Blueprint, render_template, current_app
+from flask import Blueprint, render_template
 from flask_flatpages import FlatPages
 
 bp = Blueprint('blog', __name__, static_folder='static')
@@ -53,6 +52,6 @@ def index():
 
 @bp.route('/tag/<string:t>')
 def tag(t):
-    filtered = [p for p in pages if t in p.meta.get('tags', [])]
+    filtered = [p for p in blog_pages if t in p.meta.get('tags', [])]
     latest = _sort_by_updated(filtered)
     return latest
