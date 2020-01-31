@@ -1,1 +1,1 @@
-from jackmoody11.blog.routes import blog  # noqa: F401
+from jackmoody11.blog.routes import bp, blog_pages  # noqa: F401

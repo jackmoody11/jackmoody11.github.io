@@ -13,6 +13,6 @@ script:
   - flake8 .
 deploy:
   provider: script
-  script: flask deploy
+  script: flask build deploy
   on:
     branch: app
