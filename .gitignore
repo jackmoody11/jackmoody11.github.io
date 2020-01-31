@@ -9,3 +9,6 @@ __pycache__/
 
 # Build files
 build/
+
+# Mac
+.DS_Store
