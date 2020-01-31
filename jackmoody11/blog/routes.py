@@ -1,34 +1,58 @@
-import datetime
+import datetime as dt
 import os
 
 from flask import Blueprint, render_template, current_app
 from flask_flatpages import FlatPages
 
-blog = Blueprint('blog', __name__, static_folder='static')
+bp = Blueprint('blog', __name__, static_folder='static')
+blog_pages = FlatPages()
+
+EXCLUDE_PAGES = ["README", "template"]
 
 
 def _ensure_datetime(val):
     """Ensure ``val`` is a datetime.datetime object, converting it
     from a datetime.date if necessary.
     """
-    if isinstance(val, datetime.date):
-        ret = datetime.datetime.combine(val, datetime.datetime.min.time())
-    elif isinstance(val, datetime.datetime):
+    if isinstance(val, dt.date):
+        ret = dt.datetime.combine(val, dt.datetime.min.time())
+    elif isinstance(val, dt.datetime):
         ret = val
     else:
         raise ValueError('Could not convert {} to a datetime.datetime')
     return ret
 
 
-@blog.route('/blog/<path:path>/')
+def _sort_by_updated(pages):
+    """Returns a list of pages sorted by the "updated" field.
+    Exludes any of the pages in EXCLUDE_PAGES.
+    """
+
+    def sort_key(page):
+        return _ensure_datetime(page.meta['published'])
+
+    return [page for page in sorted(pages,
+                                    reverse=True,
+                                    key=sort_key)
+            if page.path not in EXCLUDE_PAGES]
+
+
+@bp.route('/blog/<path:path>/')
 def show(path):
-    pages = FlatPages(current_app)
-    page = pages.get(path)
+    p = blog_pages.get_or_404(path)
     return render_template('blog/post.html',
-                           page=page)
+                           page=p)
 
 
-@blog.route('/blog/')
+@bp.route('/blog/')
 def index():
-    pages = FlatPages(current_app)
-    return render_template('blog/base.html', pages=pages)
+    all_pages = [p for p in blog_pages if p.path not in EXCLUDE_PAGES]
+    pages_sorted = _sort_by_updated(all_pages)
+    return render_template('blog/base.html', pages=pages_sorted)
+
+
+@bp.route('/tag/<string:t>')
+def tag(t):
+    filtered = [p for p in pages if t in p.meta.get('tags', [])]
+    latest = _sort_by_updated(filtered)
+    return latest

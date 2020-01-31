@@ -1,1 +1,1 @@
-from jackmoody11.euler.routes import euler  # noqa: F401
+from jackmoody11.euler.routes import bp  # noqa: F401

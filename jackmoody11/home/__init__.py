@@ -1,1 +1,1 @@
-from jackmoody11.home.routes import home  # noqa: F401
+from jackmoody11.home.routes import bp  # noqa: F401
