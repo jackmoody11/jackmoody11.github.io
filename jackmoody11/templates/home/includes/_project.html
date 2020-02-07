@@ -7,7 +7,8 @@
             {% for tag in project.tags %}
                 <span class="badge badge-light">{{ tag }}</span>
             {% endfor %}
-            <p class="card-text">{{ project.description }}</p>
+
+            <p class="card-text py-3">{{ project.description }}</p>
             {% if "project euler" in project.description.lower() %}
                 {% set url=url_for('euler.index') %}
             {% else %}
