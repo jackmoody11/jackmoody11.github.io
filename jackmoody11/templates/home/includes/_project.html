@@ -10,11 +10,9 @@
 
             <p class="card-text py-3">{{ project.description }}</p>
             {% if "project euler" in project.description.lower() %}
-                {% set url=url_for('euler.index') %}
-            {% else %}
-                {% set url=project.url %}
+                <a href="{{ url_for('euler.index') }}" class="btn btn-primary">Solutions</a>
             {% endif %}
-            <a href="{{ url }}" class="btn btn-primary">
+            <a href="{{ project.url }}" class="btn btn-primary" target="_blank">
                 Source
             </a>
         </div>
