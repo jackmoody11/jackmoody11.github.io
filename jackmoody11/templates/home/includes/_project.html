@@ -1,16 +1,14 @@
-<div class="col-md-4 mb-3">
-    <div class="card"
-         id="{% if project.starred %}card-border{% endif %}"
-    >
+<div class="col-md-4 project-card-container mb-3">
+    <div class="card" id="{% if project.starred %}card-border{% endif %}">
         <div class="card-body">
             <h5 class="card-title">{{ project.name }}</h5>
             {% for tag in project.tags %}
-                <span class="badge badge-light">{{ tag }}</span>
+            <span class="badge badge-light filter-badge">{{ tag }}</span>
             {% endfor %}
 
             <p class="card-text py-3">{{ project.description }}</p>
             {% if "project euler" in project.description.lower() %}
-                <a href="{{ url_for('euler.index') }}" class="btn btn-primary">Solutions</a>
+            <a href="{{ url_for('euler.index') }}" class="btn btn-primary">Solutions</a>
             {% endif %}
             <a href="{{ project.url }}" class="btn btn-primary" target="_blank">
                 Source

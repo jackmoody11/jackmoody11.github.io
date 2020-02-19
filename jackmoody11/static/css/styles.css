@@ -1,5 +1,3 @@
-/* Variables */
-/* Overrides */
 .navbar-toggler:focus, .navbar-toggler:active {
   outline: none;
   -webkit-box-shadow: none;
@@ -15,7 +13,16 @@ p {
   border-color: #3182ce;
 }
 
-.btn-primary:hover {
+.btn-outline-primary {
+  border-color: #3182ce;
+  color: #3182ce;
+}
+
+.btn-outline-primary:hover {
+  background-color: #3182ce;
+}
+
+.btn:hover {
   background-color: #4299e1;
   border-color: #4299e1;
 }
@@ -32,8 +39,6 @@ p {
   font-size: 110%;
 }
 
-/* End Overrides */
-/* Cards */
 #card-left-border {
   padding: 1.25rem;
   margin-top: 1.25rem;
@@ -49,7 +54,6 @@ p {
   border-color: #ecc94b;
 }
 
-/* Footer */
 #footer-spacer {
   height: 60px;
   width: 100%;
@@ -65,7 +69,6 @@ p {
   background-color: #f7fafc;
 }
 
-/* Social icons */
 .social-icons {
   padding-left: 15px;
   padding-right: 15px;
@@ -81,9 +84,32 @@ p {
   color: #4a5568;
 }
 
-/* https://www.freecodecamp.org/news/how-to-keep-your-footer-where-it-belongs-59c6aa05c59c  */
 #page-container {
   position: relative;
   min-height: 100vh;
+}
+
+.close-btn {
+  display: none;
+}
+
+.close-btn:hover {
+  display: block;
+}
+
+.tag-filter {
+  background-color: #edf2f7;
+}
+
+.tag-filter:hover {
+  background-color: #cbd5e0;
+}
+
+.filter-badge {
+  background-color: #edf2f7;
+}
+
+.filter-badge:hover {
+  background-color: #cbd5e0;
 }
 /*# sourceMappingURL=styles.css.map */

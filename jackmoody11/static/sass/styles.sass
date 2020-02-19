@@ -1,4 +1,4 @@
-/* Variables */
+// Variables
 $black: #000000
 $white: #ffffff
 $gray-100: #f7fafc
@@ -92,7 +92,7 @@ $pink-700: #b83280
 $pink-800: #97266d
 $pink-900: #702459
 
-/* Overrides */
+// Overrides
 .navbar-toggler:focus, .navbar-toggler:active
   outline: none
   box-shadow: none
@@ -105,9 +105,15 @@ p
     background-color: $blue-600
     border-color: $blue-600
 
+  &-outline-primary
+    border-color: $blue-600
+    color: $blue-600
     &:hover
-      background-color: $blue-500
-      border-color: $blue-500
+      background-color: $blue-600
+
+  &:hover
+    background-color: $blue-500
+    border-color: $blue-500
 
 .bg-light
   background-color: $gray-200 !important
@@ -117,9 +123,9 @@ p
 
 .large-text
   font-size: 110%
-/* End Overrides */
+// End Overrides
 
-/* Cards */
+// Cards
 #card-left-border
   padding: 1.25rem
   margin-top: 1.25rem
@@ -129,16 +135,14 @@ p
   border-radius: .25rem
   width: 100%
 
-
 #card-border
   border-width: .25rem
   border-color: $yellow-500
 
-/* Footer */
+// Footer
 #footer-spacer
   height: 60px
   width: 100%
-
 
 .footer
   position: absolute
@@ -149,12 +153,10 @@ p
   width: 100%
   background-color: $gray-100
 
-
-/* Social icons */
+// Social icons
 .social-icons
   padding-left: 15px
   padding-right: 15px
-
 
 .social-icons a
   text-decoration: none
@@ -164,7 +166,24 @@ p
   &:hover
     color: $gray-700
 
-/* https://www.freecodecamp.org/news/how-to-keep-your-footer-where-it-belongs-59c6aa05c59c  */
+// https://www.freecodecamp.org/news/how-to-keep-your-footer-where-it-belongs-59c6aa05c59c
 #page-container
   position: relative
   min-height: 100vh
+
+// Projects page
+.close-btn
+  display: none
+
+  &:hover
+    display: block
+
+.tag-filter
+  background-color: $gray-200
+  &:hover
+    background-color: $gray-400
+
+.filter-badge
+  background-color: $gray-200
+  &:hover
+    background-color: $gray-400
