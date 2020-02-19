@@ -1,4 +1,4 @@
-.navbar-toggler:focus, .navbar-toggler:active {
+@use './colors' {}.navbar-toggler:focus, .navbar-toggler:active {
   outline: none;
   -webkit-box-shadow: none;
           box-shadow: none;
@@ -39,6 +39,10 @@ p {
   font-size: 110%;
 }
 
+.navbar {
+  background-color: #edf2f7;
+}
+
 #card-left-border {
   padding: 1.25rem;
   margin-top: 1.25rem;
@@ -57,16 +61,6 @@ p {
 #footer-spacer {
   height: 60px;
   width: 100%;
-}
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  padding: 15px;
-  height: 60px;
-  text-align: center;
-  width: 100%;
-  background-color: #f7fafc;
 }
 
 .social-icons {
@@ -111,5 +105,15 @@ p {
 
 .filter-badge:hover {
   background-color: #cbd5e0;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  padding: 15px;
+  height: 60px;
+  text-align: center;
+  width: 100%;
+  background-color: #edf2f7 !important;
 }
 /*# sourceMappingURL=styles.css.map */
