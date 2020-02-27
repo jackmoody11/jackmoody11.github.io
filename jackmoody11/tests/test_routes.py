@@ -1,5 +1,4 @@
 import pytest
-# import tempfile
 
 from jackmoody11.app import create_app
 

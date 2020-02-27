@@ -3,17 +3,21 @@
 {% block title %} Projects {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1>Projects</h1>
-        <hr/>
-        {% for project_row in projects | batch(3) %}
-            <div class="container">
-                <div class="row mb-3">
-                    {% for project in project_row %}
-                        {% include 'home/includes/_project.html' %}
-                    {% endfor %}
-                </div>
-            </div>
+<div class="container">
+    <h1>Projects</h1>
+    <hr />
+    <div class="mb-3" id="tag-filters"></div>
+
+    <div class="card-deck card-columns mb-3">
+        {% for project in projects %}
+        {% include 'home/includes/_project.html' %}
         {% endfor %}
     </div>
+
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/project_search.js') }}"></script>
 {% endblock %}
