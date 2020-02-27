@@ -3,16 +3,19 @@
         <div class="card-body">
             <h5 class="card-title">{{ project.name }}</h5>
             {% for tag in project.tags %}
-            <span class="badge badge-light filter-badge">{{ tag }}</span>
+                <span class="badge badge-light filter-badge">{{ tag }}</span>
             {% endfor %}
 
             <p class="card-text py-3">{{ project.description }}</p>
             {% if "project euler" in project.description.lower() %}
-            <a href="{{ url_for('euler.index') }}" class="btn btn-primary">Solutions</a>
+                <a href="{{ url_for('euler.index') }}" class="btn btn-primary">Solutions</a>
             {% endif %}
             <a href="{{ project.url }}" class="btn btn-primary" target="_blank">
                 Source
             </a>
+            {% if project.docs %}
+                <a href="{{ project.docs }}" class="btn btn-primary" target="_blank">Docs</a>
+            {% endif %}
         </div>
     </div>
 </div>

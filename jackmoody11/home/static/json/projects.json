@@ -9,6 +9,7 @@
         "Pandas"
       ],
       "url": "https://github.com/jackmoody11/stockscore",
+      "docs": "https://jackmoody11.github.io/stockscore",
       "starred": false
     },
     {
@@ -21,6 +22,7 @@
         "BeautifulSoup"
       ],
       "url": "https://github.com/jackmoody11/sec-edgar",
+      "docs": "https://rudrakos.com/sec-edgar/",
       "starred": false
     },
     {
@@ -76,6 +78,19 @@
         "Bootstrap 4"
       ],
       "url": "https://github.com/jackmoody11/jackmoody11.github.io",
+      "starred": false
+    },
+    {
+      "name": "Auto DCF",
+      "description": "Easy plug-and-chug discounted cash flow model framework that allows for advanced modeling and sensitivity tests.",
+      "tags": [
+        "Python",
+        "Pandas",
+        "Finance",
+        "Numpy"
+      ],
+      "url": "https://github.com/jackmoody11/autodcf",
+      "docs": "https://jackmoody11.github.io/autodcf/",
       "starred": false
     }
   ]
