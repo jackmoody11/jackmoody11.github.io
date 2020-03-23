@@ -9,3 +9,7 @@ __pycache__/
 
 # Build files
 build/
+.sass-cache/
+
+# Mac
+.DS_Store
