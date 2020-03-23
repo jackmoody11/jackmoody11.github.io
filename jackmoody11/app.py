@@ -1,5 +1,4 @@
 from flask import Flask, render_template
-from flask_flatpages import pygments_style_defs
 from jackmoody11 import blog, euler, home
 
 from jackmoody11.blog import blog_pages
@@ -33,9 +32,4 @@ def create_app(config_class=Config):
         }
 
     blog_pages.init_app(app)
-
-    @app.route('/pygments.css')
-    def pygments_css():
-        return pygments_style_defs('tango'), 200, {'Content-Type': 'text/css'}
-
     return app
