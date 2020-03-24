@@ -1,5 +1,7 @@
-My Personal Website
-===================
+# My Personal Website
+
+![](https://github.com/jackmoody11/jackmoody11.github.io/workflows/test/badge.svg)
+![](https://github.com/jackmoody11/jackmoody11.github.io/workflows/deploy/badge.svg)
 
 This is the repo for my personal website. This site uses the following technologies:
 
@@ -7,4 +9,3 @@ This is the repo for my personal website. This site uses the following technolog
 - Travis CI (for automatic deployment of site on push to app branch (master development branch))
 - Javascript (for making AJAX calls to render code for Project Euler problems)
 - Bootstrap (for CSS styling and grid system)
-
