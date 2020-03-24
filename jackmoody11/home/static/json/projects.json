@@ -1,6 +1,5 @@
 {
-  "projects": [
-    {
+  "projects": [{
       "name": "Stock Score",
       "description": "A Python project to fetch stock financials/statistics and perform preliminary screens to aid in the stock selection process.",
       "tags": [
@@ -9,7 +8,7 @@
         "Pandas"
       ],
       "url": "https://github.com/jackmoody11/stockscore",
-      "docs": "https://jackmoody11.github.io/stockscore",
+      "docs": "https://jack-moody.com/stockscore",
       "starred": false
     },
     {
@@ -90,7 +89,7 @@
         "Numpy"
       ],
       "url": "https://github.com/jackmoody11/autodcf",
-      "docs": "https://jackmoody11.github.io/autodcf/",
+      "docs": "https://jack-moody.com/autodcf/",
       "starred": false
     }
   ]

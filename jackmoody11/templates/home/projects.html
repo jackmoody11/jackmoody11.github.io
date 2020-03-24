@@ -3,19 +3,17 @@
 {% block title %} Projects {% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>Projects</h1>
-    <hr />
-    <div class="mb-3" id="tag-filters"></div>
 
-    <div class="card-deck card-columns mb-3">
-        {% for project in projects %}
-        {% include 'home/includes/_project.html' %}
-        {% endfor %}
-    </div>
+<h1>Projects</h1>
+<hr />
+<div class="mb-3" id="tag-filters"></div>
 
-
+<div class="card-deck card-columns mb-3">
+    {% for project in projects %}
+    {% include 'home/includes/_project.html' %}
+    {% endfor %}
 </div>
+
 {% endblock %}
 
 {% block scripts %}
