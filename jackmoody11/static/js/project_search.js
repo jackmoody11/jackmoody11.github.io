@@ -39,10 +39,19 @@ function addFilter() {
     // Add badge to list of filters if not already added
     if (!filters.includes(this.innerText)) {
         var filter_badge = document.createElement("span");
-        filter_badge.className = "badge badge-light m-1 tag-filter";
+        filter_badge.classList.add("badge", "badge-light", "m-1", "tag-filter");
         filter_badge.innerText = this.innerText;
+
+        // Create close link and icon
+        close_link = document.createElement("a");
+        close_link.classList.add("close-btn");
+        close_icon = document.createElement("i");
+        close_icon.classList.add("far", "fa-times-circle", "p-1");
+        close_link.appendChild(close_icon)
+
+        // Add close link to filter and badge to filter list
+        filter_badge.appendChild(close_link);
         tag_filters.appendChild(filter_badge);
-        // filter_badge.(tag_filters.children[0]);
         filters.push(this.innerText);
 
         // Add event listener to newly added filter
@@ -55,7 +64,7 @@ function addFilter() {
     // Add button to clear all filters if not yet added
     if (!document.contains(document.getElementById("filter-clear-btn"))) {
         var clear_btn = document.createElement("div");
-        clear_btn.className = "btn btn-outline-primary float-right";
+        clear_btn.classList.add("btn", "btn-outline-primary", "float-right");
         clear_btn.id = "filter-clear-btn";
         clear_btn.innerHTML = "Clear Filters";
         clear_btn.addEventListener("click", removeAllFilters);
