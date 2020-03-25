@@ -8,5 +8,5 @@
         "../sass/_colors.sass"
     ],
     "names": [],
-    "file": "styles.css"
+    "file": "styles.min.css"
 }

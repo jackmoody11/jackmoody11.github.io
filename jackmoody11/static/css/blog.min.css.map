@@ -5,5 +5,5 @@
         "../sass/blog.sass"
     ],
     "names": [],
-    "file": "blog.css"
+    "file": "blog.min.css"
 }

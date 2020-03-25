@@ -6,5 +6,5 @@
         "../sass/_colors.sass"
     ],
     "names": [],
-    "file": "overrides.css"
+    "file": "overrides.min.css"
 }
