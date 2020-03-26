@@ -1,0 +1,28 @@
+{
+  "name": "jackmoody11.github.io",
+  "version": "0.1.0",
+  "description": "Jack Moody's Personal Website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackmoody11/jackmoody11.github.io.git"
+  },
+  "keywords": [
+    "website"
+  ],
+  "author": "Jack Moody",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jackmoody11/jackmoody11.github.io/issues"
+  },
+  "homepage": "https://github.com/jackmoody11/jackmoody11.github.io#readme",
+  "dependencies": {
+    "gatsby": "^2.20.6",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-helmet": "^5.2.1"
+  }
+}

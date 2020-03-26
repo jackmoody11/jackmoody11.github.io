@@ -12,8 +12,10 @@ build/
 .sass-cache/
 dist/
 
-# Mac
+# Build Path of Test Fixtures
+test/**/public
+.gatsby-context.js
 .DS_Store
-
-# Node
-/node_modules
+public/
+node_modules/
+.cache/
