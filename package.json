@@ -4,6 +4,10 @@
   "description": "Jack Moody's Personal Website",
   "main": "index.js",
   "scripts": {
+    "build": "gatsby build",
+    "develop": "env-cmd -f .env.development gatsby develop",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,9 +24,19 @@
   },
   "homepage": "https://github.com/jackmoody11/jackmoody11.github.io#readme",
   "dependencies": {
-    "gatsby": "^2.20.6",
+    "fs": "0.0.1-security",
+    "gatsby": "^2.20.10",
+    "gatsby-plugin-react-helmet": "^3.2.1",
+    "gatsby-plugin-sass": "^2.2.1",
+    "gatsby-source-filesystem": "^2.2.2",
+    "gatsby-transformer-json": "^2.3.1",
+    "gatsby-transformer-remark": "^2.3.8",
+    "node-sass": "^4.13.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^5.2.1"
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0"
   }
 }

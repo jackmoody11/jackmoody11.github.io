@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import Helmet from "react-helmet";
+import { Helmet } from "react-helmet";
 import Logo from "../../static/img/jackmoody_logo.png";
-import Styles from "../../static/css/styles.min.css";
-
+import "../styles/styles.sass";
 class DefaultLayout extends Component {
   render() {
     return (
@@ -23,8 +22,6 @@ class DefaultLayout extends Component {
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
           crossOrigin="anonymous"
         />
-        <link rel="stylesheet" href={Styles} />
-
         <link rel="icon" href={Logo} />
       </Helmet>
     );
