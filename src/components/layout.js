@@ -7,8 +7,12 @@ import "../styles/styles.sass";
 export default props => (
   <>
     <Head />
-    <Navigation />
-    <div className="container py-5">{props.children}</div>
-    <Footer />
+    <div id="page-container">
+      <Navigation />
+      <div className="container py-5">
+        <div className="mb-5">{props.children}</div>
+      </div>
+      <Footer />
+    </div>
   </>
 );
