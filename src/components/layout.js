@@ -1,12 +1,14 @@
 import React from "react";
-import Logo from "../../static/img/jackmoody_logo.png";
 import Footer from "../components/footer";
 import Navigation from "../components/navigation";
+import Head from "./head";
 import "../styles/styles.sass";
+
 export default props => (
   <>
+    <Head />
     <Navigation />
-    {props.children}
+    <div className="container py-5">{props.children}</div>
     <Footer />
   </>
 );
