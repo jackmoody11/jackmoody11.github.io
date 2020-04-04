@@ -1,5 +1,0 @@
-Flask==1.1.1
-Frozen-Flask
-flask_flatpages
-ghp-import
-pytest

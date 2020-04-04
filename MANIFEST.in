@@ -1,2 +1,0 @@
-recursive-include personal_site/templates *
-recursive-include personal_site/static *
