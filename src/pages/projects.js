@@ -1,12 +1,17 @@
 import React from "react";
-import projectsJSON from "../../static/json/projects.json";
+import projects from "../content/projects.json";
 import ProjectCard from "../components/project_card";
+import Layout from "../components/layout";
+import "../styles/styles.sass";
 
-export default () => {
-  var projects = JSON.parse(projectsJSON)["projects"];
-  var projectCards = [];
-  projects.forEach(project => {
-    projectCards.push(<ProjectCard project={project} />);
-  });
-  return projectCards;
-};
+const ProjectPage = () => (
+  <Layout>
+    <div className="row">
+      {projects.projects.map(project => (
+        <ProjectCard project={project} />
+      ))}
+    </div>
+  </Layout>
+);
+
+export default ProjectPage;

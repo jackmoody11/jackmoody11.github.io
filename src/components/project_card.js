@@ -2,81 +2,71 @@ import React from "react";
 import { Link } from "gatsby";
 import projectCardStyles from "./project_card.module.sass";
 
-export default class ProjectCard extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      description: null,
-      tags: [],
-      name: null,
-      docs: null,
-      url: null
-    };
-  }
+const ProjectCard = ({ project }) => (
+  <div className="col-lg-4 project-card-container mb-3">
+    <Card project={project}>
+      <div className="card-body">
+        <h5 className="card-title">{project.name}</h5>
+        <ProjectTags project={project} />
 
-  render() {
-    return (
-      <div class="col-lg-4 project-card-container mb-3">
-        <Card project={this.state}>
-          <div className="card-body">
-            <h5 className="card-title">{this.state.name}</h5>
-            <ProjectTags project={this.state} />
-
-            <p className="card-text py-3">{this.state.description}</p>
-            <ProjectEulerSolutionsButton project={this.state} />
-            <Link
-              to={this.state.url}
-              className="btn btn-primary"
-              target="_blank"
-            >
-              Source
-            </Link>
-            <ProjectDocsButton />
-          </div>
-        </Card>
+        <p className="card-text py-3">{project.description}</p>
+        <ProjectEulerSolutionsButton project={project} />
+        <a href={project.url} className="btn btn-primary mr-1" target="_blank">
+          Source
+        </a>
+        <ProjectDocsButton project={project} />
       </div>
-    );
-  }
-}
+    </Card>
+  </div>
+);
 
-function Card(project, children) {
+const Card = props => {
   // Outline border with card internals (used for final card)
-  var card = <div className="card">{children}</div>;
-  if (project.starred) {
-    card.setState({ id: projectCardStyles.cardBorder });
-  }
-  return card;
-}
+  var starred_id = props.project.starred ? projectCardStyles.cardBorder : "";
+  return (
+    <div className="card" id={starred_id}>
+      {props.children}
+    </div>
+  );
+};
 
-function ProjectTags(project) {
+const ProjectTags = ({ project }) => {
   // All project tags as badges
   return (
     <div>
-      {project.map(project => (
+      {project.tags.map(tag => (
         <span className={"badge badge-light " + projectCardStyles.filterBadge}>
-          {project.tag}
+          {tag}
         </span>
       ))}
     </div>
   );
-}
+};
 
-function ProjectEulerSolutionsButton(project) {
+const ProjectEulerSolutionsButton = ({ project }) => {
   // Button for link to main Project Euler solutions page
   if (project.name.toLowerCase().includes("project euler")) {
     return (
-      <Link to="/euler" className="btn btn-primary">
+      <Link to="/euler" className="btn btn-primary mr-1">
         Solutions
       </Link>
     );
+  } else {
+    return <></>;
   }
-}
+};
 
-function ProjectDocsButton(project) {
+const ProjectDocsButton = ({ project }) => {
   // Button for link to documentation of project
-  if (project.docs) {
+  if (project.hasOwnProperty("docs")) {
     return (
-      <Link to={project.docs} className="btn btn-primary" target="_blank" />
+      <a href={project.docs} className="btn btn-primary" target="_blank">
+        Docs
+      </a>
     );
+  } else {
+    return null;
   }
-}
+};
+
+export default ProjectCard;
