@@ -11,7 +11,12 @@ const ProjectCard = ({ project }) => (
 
         <p className="card-text py-3">{project.description}</p>
         <ProjectEulerSolutionsButton project={project} />
-        <a href={project.url} className="btn btn-primary mr-1" target="_blank">
+        <a
+          href={project.url}
+          className="btn btn-primary mr-1"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Source
         </a>
         <ProjectDocsButton project={project} />
@@ -60,7 +65,12 @@ const ProjectDocsButton = ({ project }) => {
   // Button for link to documentation of project
   if (project.hasOwnProperty("docs")) {
     return (
-      <a href={project.docs} className="btn btn-primary" target="_blank">
+      <a
+        href={project.docs}
+        className="btn btn-primary"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Docs
       </a>
     );
