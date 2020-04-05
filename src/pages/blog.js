@@ -15,6 +15,9 @@ const BlogPage = () => {
               date
             }
             excerpt
+            fields {
+              slug
+            }
           }
         }
       }

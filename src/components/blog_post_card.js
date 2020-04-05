@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "gatsby";
 
 const BlogPostCard = ({ edge }) => (
   <div className="card">
@@ -16,7 +17,9 @@ const BlogPostCard = ({ edge }) => (
       <p className="card-text">
         <small className="text-muted">{}</small>
       </p>
-      <p className="card-text">Continue Reading</p>
+      <p className="card-text">
+        <Link to={`/blog/${edge.node.fields.slug}`}>Continue Reading</Link>
+      </p>
     </div>
   </div>
 );
