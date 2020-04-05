@@ -5,6 +5,8 @@ date: "2020-04-03"
 
 I just made a new site with Gatsby.
 
+![Field of Grain](./grain.jpg)
+
 ## Things Learned
 
 1. Gatsby
