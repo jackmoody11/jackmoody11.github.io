@@ -19,3 +19,6 @@ test/**/public
 public/
 node_modules/
 .cache/
+
+# Environment variables
+.env
