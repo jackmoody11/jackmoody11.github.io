@@ -6,6 +6,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "env-cmd -f .env gatsby develop",
+    "deploy": "gatsby build && gh-pages -d public -b master",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -41,6 +42,7 @@
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
-    "env-cmd": "^10.1.0"
+    "env-cmd": "^10.1.0",
+    "gh-pages": "^2.2.0"
   }
 }
