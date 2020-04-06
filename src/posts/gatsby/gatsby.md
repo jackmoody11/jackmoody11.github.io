@@ -1,6 +1,7 @@
 ---
 title: "The Great Gatsby Bootcamp"
 date: "2020-04-03"
+tags: ["Gatsby", "React"]
 ---
 
 I just made a new site with Gatsby.

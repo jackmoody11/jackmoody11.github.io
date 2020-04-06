@@ -5,7 +5,7 @@ import Head from "./head";
 
 export default props => (
   <>
-    <Head />
+    <Head {...props} />
     <div id="page-container">
       <Navigation />
       <div className="container py-5">

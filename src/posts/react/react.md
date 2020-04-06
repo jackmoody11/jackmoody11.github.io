@@ -1,6 +1,7 @@
 ---
 title: "React"
 date: "2020-04-03"
+tags: ["React", "Javascript"]
 ---
 
 I learned about React too.

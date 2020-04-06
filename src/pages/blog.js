@@ -13,6 +13,7 @@ const BlogPage = () => {
             frontmatter {
               title
               date
+              tags
             }
             excerpt
             fields {
@@ -25,13 +26,21 @@ const BlogPage = () => {
   `);
 
   return (
-    <Layout>
-      <h1>Blog</h1>
-      <p>Posts will go here.</p>
-      <div className="card-deck">
-        {data.allMarkdownRemark.edges.map(edge => (
-          <BlogPostCard edge={edge} />
-        ))}
+    <Layout title="Blog">
+      <div className="container mb-3">
+        <div className="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+          <div className="col-md-6 px-0">
+            <h1 className="display-4 font-italic">Coming Soon</h1>
+            <p className="lead my-3">
+              This blog is currently a work-in-progress.
+            </p>
+          </div>
+        </div>
+        <div className="card-deck">
+          {data.allMarkdownRemark.edges.map(edge => (
+            <BlogPostCard edge={edge} />
+          ))}
+        </div>
       </div>
     </Layout>
   );

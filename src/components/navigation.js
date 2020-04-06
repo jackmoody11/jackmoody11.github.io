@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
-import LogoSVG from "../../static/jackmoody_logo.svg";
+import LogoSVG from "../static/jackmoody_logo.svg";
 
 export default () => (
   <nav className="navbar navbar-expand-lg navbar-light bg-light pb-2">
