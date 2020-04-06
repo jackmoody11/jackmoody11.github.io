@@ -6,3 +6,10 @@ on:
   pull_request:
     branches: [app, dev, gatsby]
 
+steps:
+- uses: actions/checkout@v2
+- uses: actions/setup-node@v1
+  with:
+    node-version: '10.x'
+- run: npm install
+- run: npm test
