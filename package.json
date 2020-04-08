@@ -25,8 +25,12 @@
   },
   "homepage": "https://github.com/jackmoody11/jackmoody11.github.io#readme",
   "dependencies": {
+    "@mdx-js/mdx": "^1.5.8",
+    "@mdx-js/react": "^1.5.8",
+    "bootstrap": "^4.4.1",
     "fs": "0.0.1-security",
     "gatsby": "^2.20.10",
+    "gatsby-plugin-mdx": "^1.1.5",
     "gatsby-plugin-react-helmet": "^3.2.1",
     "gatsby-plugin-sass": "^2.2.1",
     "gatsby-plugin-sharp": "^2.5.4",
@@ -38,6 +42,7 @@
     "moment": "^2.24.0",
     "node-sass": "^4.13.1",
     "react": "^16.13.1",
+    "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.1",
     "react-helmet": "^5.2.1"
   },

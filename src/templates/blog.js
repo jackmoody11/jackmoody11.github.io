@@ -1,48 +1,45 @@
 import React from "react";
 import { graphql } from "gatsby";
 import moment from "moment";
+import { MDXRenderer } from "gatsby-plugin-mdx";
 
 import Layout from "../components/layout";
 
 export const query = graphql`
   query($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    mdx(
+      fields: { slug: { eq: $slug } }
+      frontmatter: { posttype: { eq: "blog" } }
+    ) {
       frontmatter {
+        posttype
         tags
         title
         date
       }
-      html
+      body
     }
   }
 `;
 
-const Blog = props => {
+const Blog = ({ data: { mdx } }) => {
   return (
-    <Layout title={props.data.markdownRemark.frontmatter.title}>
+    <Layout title={mdx.frontmatter.title}>
       <main role="main" className="container">
         <div className="row">
           <div className="col-md-8 blog-main">
             <div className="blog-post">
-              <h1 className="blog-post-title">
-                {props.data.markdownRemark.frontmatter.title}
-              </h1>
-              {props.data.markdownRemark.frontmatter.tags.map(tag => (
+              <h1 className="blog-post-title">{mdx.frontmatter.title}</h1>
+              {mdx.frontmatter.tags.map((tag) => (
                 <span className="badge badge-light">{tag}</span>
               ))}
               <br />
               <small className="blog-post-meta">
                 <i className="far fa-clock mr-1"></i>
-                {moment(props.data.markdownRemark.frontmatter.date).format(
-                  "MMM D, YYYY"
-                )}
+                {moment(mdx.frontmatter.date).format("MMM D, YYYY")}
               </small>
               <hr />
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: props.data.markdownRemark.html
-                }}
-              ></div>
+              <MDXRenderer>{mdx.body}</MDXRenderer>
             </div>
           </div>
 

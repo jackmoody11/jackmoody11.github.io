@@ -16,7 +16,6 @@ const Head = ({ title }) => {
   `);
 
   let titlePrefix = "";
-  console.log(title);
   if (title !== undefined) {
     titlePrefix = `${title} |`;
   }

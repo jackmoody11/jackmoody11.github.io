@@ -2,7 +2,7 @@ module.exports = {
   pathPrefix: "/",
   siteMetadata: {
     title: "Jack Moody",
-    author: "Jack Moody"
+    author: "Jack Moody",
   },
   plugins: [
     "gatsby-plugin-sass",
@@ -10,25 +10,33 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "src",
-        path: `${__dirname}/src/`
-      }
+        path: `${__dirname}/src/content/blog`,
+        name: "blog",
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        path: `${__dirname}/src/content/euler`,
+        name: "euler",
+      },
     },
     "gatsby-plugin-sharp",
     {
-      resolve: "gatsby-transformer-remark",
+      resolve: "gatsby-plugin-mdx",
       options: {
-        plugins: [
+        extensions: [".mdx", ".md"],
+        gatsbyRemarkPlugins: [
           "gatsby-remark-relative-images",
           {
             resolve: "gatsby-remark-images",
             options: {
               maxWidth: 750,
-              linkImagesToOriginal: false
-            }
-          }
-        ]
-      }
-    }
-  ]
+              linkImagesToOriginal: false,
+            },
+          },
+        ],
+      },
+    },
+  ],
 };

@@ -7,7 +7,7 @@ import BlogPostCard from "../components/blog_post_card";
 const BlogPage = () => {
   const data = useStaticQuery(graphql`
     query {
-      allMarkdownRemark {
+      allMdx(filter: { frontmatter: { posttype: { eq: "blog" } } }) {
         edges {
           node {
             frontmatter {
@@ -37,7 +37,7 @@ const BlogPage = () => {
           </div>
         </div>
         <div className="card-deck">
-          {data.allMarkdownRemark.edges.map(edge => (
+          {data.allMdx.edges.map((edge) => (
             <BlogPostCard edge={edge} />
           ))}
         </div>
