@@ -30,6 +30,7 @@
     "bootstrap": "^4.4.1",
     "fs": "0.0.1-security",
     "gatsby": "^2.20.10",
+    "gatsby-plugin-manifest": "^2.3.3",
     "gatsby-plugin-mdx": "^1.1.5",
     "gatsby-plugin-react-helmet": "^3.2.1",
     "gatsby-plugin-sass": "^2.2.1",

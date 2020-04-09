@@ -3,6 +3,7 @@ module.exports = {
   siteMetadata: {
     title: "Jack Moody",
     author: "Jack Moody",
+    description: "Learn more about Jack Moody. A UNC-Chapel Hill graduate.",
   },
   plugins: [
     "gatsby-plugin-sass",

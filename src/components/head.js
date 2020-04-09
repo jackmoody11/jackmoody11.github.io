@@ -4,12 +4,14 @@ import { Helmet } from "react-helmet";
 import Logo from "../static/img/jackmoody_logo.png";
 import "../styles/styles.sass";
 
-const Head = ({ title }) => {
+const Head = ({ title, lang = "en", description }) => {
   const data = useStaticQuery(graphql`
     query {
       site {
         siteMetadata {
           title
+          description
+          author
         }
       }
     }
@@ -21,7 +23,36 @@ const Head = ({ title }) => {
   }
 
   return (
-    <Helmet title={`${titlePrefix} ${data.site.siteMetadata.title}`}>
+    <Helmet
+      title={`${titlePrefix} ${data.site.siteMetadata.title}`}
+      htmlAttributes={{ lang }}
+      meta={[
+        {
+          name: "description",
+          content: description,
+        },
+        {
+          property: "og:description",
+          content: description,
+        },
+        {
+          property: "og:type",
+          content: "website",
+        },
+        {
+          name: "twitter:card",
+          content: "summary",
+        },
+        {
+          name: "twitter:title",
+          content: title,
+        },
+        {
+          name: "twitter:description",
+          content: description,
+        },
+      ]}
+    >
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta
         name="description"
