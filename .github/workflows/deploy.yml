@@ -2,16 +2,17 @@ name: Deploy
 
 on:
   push:
-    branches: [app]
+    branches: [gatsby]
   pull_request:
-    branches: [app]
-
+    branches: [gatsby]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: enriikke/gatsby-gh-pages-action@v2
-        with:
-          access-token: ${{ secrets.ACCESS_TOKEN }}
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+    - run: npm install
+    - run: npm run deploy
