@@ -15,4 +15,5 @@ jobs:
       with:
         node-version: '10.x'
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+    - run: git config --global user.name "jackmoody11" && git config --global user.email "jackmoody@unc.edu"
     - run: npm install && npm run deploy
