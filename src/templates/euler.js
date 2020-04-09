@@ -3,6 +3,8 @@ import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
 import Layout from "../components/layout";
+import EulerNotes from "../components/euler/euler_notes";
+import EulerCode from "../components/euler/euler_code";
 
 export const query = graphql`
   query($slug: String!) {
@@ -25,6 +27,8 @@ const Euler = ({ data: { mdx } }) => {
   return (
     <Layout title={mdx.frontmatter.title}>
       <MDXRenderer>{mdx.body}</MDXRenderer>
+      <EulerCode />
+      <EulerNotes />
     </Layout>
   );
 };

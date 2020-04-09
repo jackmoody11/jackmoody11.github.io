@@ -22,7 +22,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const eulerTemplate = path.resolve("./src/templates/euler.js");
 
   // Get markdown data
-  const posts = await graphql(`
+  const query = await graphql(`
     {
       allMdx {
         edges {

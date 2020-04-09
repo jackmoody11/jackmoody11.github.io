@@ -1,5 +1,5 @@
 import React from "react";
-import euler_solutions from "../content/euler_solutions.json";
+import { useStaticQuery, Link } from "gatsby";
 import Layout from "../components/layout";
 
 const EulerMainPage = () => (
@@ -39,36 +39,82 @@ const ProjectEulerInfoCard = (props) => (
   </div>
 );
 
-const ProjectEulerSolutionTable = () => (
-  <table className="table table-hover mt-3">
-    <thead>
-      <tr>
-        <th scope="col">Number</th>
-        <th scope="col">Python</th>
-        <th scope="col">Java</th>
-        <th scope="col">C</th>
-      </tr>
-    </thead>
-    <tbody>
-      {euler_solutions.solutions.map((solution) => (
+const ProjectEulerSolutionTable = () => {
+  const eulerSolutions = useStaticQuery(graphql`
+    query {
+      allMdx(
+        filter: { frontmatter: { posttype: { eq: "euler" } } }
+        sort: { fields: [fields___slug], order: ASC }
+      ) {
+        edges {
+          node {
+            frontmatter {
+              title
+              date
+              tags
+            }
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  const solutions = eulerSolutions.allMdx.edges;
+
+  return (
+    <table className="table table-hover mt-3">
+      <thead>
         <tr>
-          <th scope="row">
-            <a href="#">{solution.number}</a>
-          </th>
-          <td>
-            <SolutionExistsIcon solutionExists={solution.python} />
-          </td>
-          <td>
-            <SolutionExistsIcon solutionExists={solution.java} />
-          </td>
-          <td>
-            <SolutionExistsIcon solutionExists={solution.c} />
-          </td>
+          <th scope="col">Number</th>
+          <th scope="col">Python</th>
+          <th scope="col">Java</th>
+          <th scope="col">C</th>
         </tr>
-      ))}
-    </tbody>
-  </table>
-);
+      </thead>
+      <tbody>
+        {solutions.map((solution) => {
+          const slugArr = solution.node.fields.slug.split("-");
+          let problemNumber = slugArr[slugArr.length - 1];
+          problemNumber = problemNumber.substring(0, problemNumber.length - 1);
+
+          return (
+            <tr>
+              <th scope="row">
+                <Link to={`euler/${solution.node.fields.slug}`}>
+                  {problemNumber}
+                </Link>
+              </th>
+              <td>
+                <SolutionExistsIcon
+                  solutionExists={solution.node.frontmatter.tags
+                    .map((tag) => tag.toLowerCase())
+                    .includes("python")}
+                />
+              </td>
+              <td>
+                <SolutionExistsIcon
+                  solutionExists={solution.node.frontmatter.tags
+                    .map((tag) => tag.toLowerCase())
+                    .includes("java")}
+                />
+              </td>
+              <td>
+                <SolutionExistsIcon
+                  solutionExists={solution.node.frontmatter.tags
+                    .map((tag) => tag.toLowerCase())
+                    .includes("c")}
+                />
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  );
+};
 
 const SolutionExistsIcon = ({ solutionExists }) => (
   <i
