@@ -14,7 +14,4 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '10.x'
-    - run: npm install
-    - run: git config user.email "jacklaytonmoody@gmail.com"
-    - run: git config user.name "Jack Moody"
-    - run: npm run deploy
+    - run: npm install && npm run deploy
