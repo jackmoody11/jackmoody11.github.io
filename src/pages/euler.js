@@ -1,5 +1,5 @@
 import React from "react";
-import { useStaticQuery, Link } from "gatsby";
+import { useStaticQuery, Link, graphql } from "gatsby";
 import Layout from "../components/layout";
 
 const EulerMainPage = () => (
