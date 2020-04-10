@@ -2,7 +2,7 @@ import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 
 import Layout from "../components/layout";
-import BlogPostCard from "../components/blog_post_card";
+import BlogPostCard from "../components/blog/blog_post_card";
 
 const BlogPage = () => {
   const data = useStaticQuery(graphql`

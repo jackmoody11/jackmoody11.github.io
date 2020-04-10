@@ -1,6 +1,6 @@
 import React from "react";
 import projects from "../content/projects.json";
-import ProjectCard from "../components/project_card";
+import ProjectCard from "../components/projects/project_card";
 import Layout from "../components/layout";
 
 const ProjectPage = () => (

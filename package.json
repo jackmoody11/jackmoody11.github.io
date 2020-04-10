@@ -9,7 +9,8 @@
     "deploy": "gatsby build && gh-pages -d public -b master -r https://$ACCESS_TOKEN@github.com/jackmoody11/jackmoody11.github.io.git",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint . --ignore-path .gitignore --ext .js"
   },
   "repository": {
     "type": "git",
