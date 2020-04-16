@@ -27,17 +27,33 @@ const Euler = ({ data: { mdx }, pageContext }) => {
   const { next, prev } = pageContext;
   let prevLink =
     prev === false ? null : (
-      <Link to={`euler${prev.fields.slug}`}>Previous</Link>
+      <Link
+        to={`euler${prev.fields.slug}`}
+        className="btn btn-primary"
+        role="button"
+      >
+        Previous
+      </Link>
     );
   let nextLink =
-    next === false ? null : <Link to={`euler${next.fields.slug}`}>Next</Link>;
+    next === false ? null : (
+      <Link
+        to={`euler${next.fields.slug}`}
+        className="btn btn-primary"
+        role="button"
+      >
+        Next
+      </Link>
+    );
   return (
     <Layout title={mdx.frontmatter.title}>
       <MDXRenderer>{mdx.body}</MDXRenderer>
       <EulerCode />
       <EulerNotes />
-      {prevLink}
-      {nextLink}
+      <div className="d-flex justify-content-between">
+        {prevLink}
+        {nextLink}
+      </div>
     </Layout>
   );
 };

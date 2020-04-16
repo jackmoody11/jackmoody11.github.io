@@ -27,10 +27,24 @@ const Blog = ({ data: { mdx }, pageContext }) => {
 
   let prevLink =
     prev === false ? null : (
-      <Link to={`blog${prev.fields.slug}`}>Previous</Link>
+      <Link
+        to={`blog${prev.fields.slug}`}
+        className="btn btn-primary"
+        role="button"
+      >
+        Previous
+      </Link>
     );
   let nextLink =
-    next === false ? null : <Link to={`blog${next.fields.slug}`}>Next</Link>;
+    next === false ? null : (
+      <Link
+        to={`blog${next.fields.slug}`}
+        className="btn btn-primary"
+        role="button"
+      >
+        Next
+      </Link>
+    );
   return (
     <Layout title={mdx.frontmatter.title}>
       <main role="main" className="container">
@@ -48,8 +62,10 @@ const Blog = ({ data: { mdx }, pageContext }) => {
               </small>
               <hr />
               <MDXRenderer>{mdx.body}</MDXRenderer>
-              {prevLink}
-              {nextLink}
+              <div className="d-flex justify-content-between">
+                {prevLink}
+                {nextLink}
+              </div>
             </div>
           </div>
           <aside className="col-md-4 blog-sidebar">
