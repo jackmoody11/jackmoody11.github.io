@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
 import Layout from "../components/layout";
@@ -23,12 +23,21 @@ export const query = graphql`
   }
 `;
 
-const Euler = ({ data: { mdx } }) => {
+const Euler = ({ data: { mdx }, pageContext }) => {
+  const { next, prev } = pageContext;
+  let prevLink =
+    prev === false ? null : (
+      <Link to={`euler${prev.fields.slug}`}>Previous</Link>
+    );
+  let nextLink =
+    next === false ? null : <Link to={`euler${next.fields.slug}`}>Next</Link>;
   return (
     <Layout title={mdx.frontmatter.title}>
       <MDXRenderer>{mdx.body}</MDXRenderer>
       <EulerCode />
       <EulerNotes />
+      {prevLink}
+      {nextLink}
     </Layout>
   );
 };

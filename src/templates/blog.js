@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import moment from "moment";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
@@ -22,7 +22,15 @@ export const query = graphql`
   }
 `;
 
-const Blog = ({ data: { mdx } }) => {
+const Blog = ({ data: { mdx }, pageContext }) => {
+  const { next, prev } = pageContext;
+
+  let prevLink =
+    prev === false ? null : (
+      <Link to={`blog${prev.fields.slug}`}>Previous</Link>
+    );
+  let nextLink =
+    next === false ? null : <Link to={`blog${next.fields.slug}`}>Next</Link>;
   return (
     <Layout title={mdx.frontmatter.title}>
       <main role="main" className="container">
@@ -40,9 +48,10 @@ const Blog = ({ data: { mdx } }) => {
               </small>
               <hr />
               <MDXRenderer>{mdx.body}</MDXRenderer>
+              {prevLink}
+              {nextLink}
             </div>
           </div>
-
           <aside className="col-md-4 blog-sidebar">
             <div className="p-3 mb-3 bg-light rounded">
               <h4 className="font-italic">About</h4>
