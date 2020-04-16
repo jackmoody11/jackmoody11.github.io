@@ -37,7 +37,7 @@ const BlogPage = () => {
           </div>
         </div>
         <div className="card-deck">
-          {data.allMdx.edges.map((edge) => (
+          {data.allMdx.edges.map((edge: { node: any; }) => (
             <BlogPostCard edge={edge} />
           ))}
         </div>

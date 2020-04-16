@@ -4,7 +4,13 @@ import { Helmet } from "react-helmet";
 import Logo from "../static/img/jackmoody_logo.png";
 import "../styles/styles.sass";
 
-const Head = ({ title, lang = "en", description }) => {
+interface IHead {
+  title: string;
+  lang: string;
+  description: string;
+}
+
+const Head = ({ title, lang = "en", description }: IHead) => {
   const data = useStaticQuery(graphql`
     query {
       site {

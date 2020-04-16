@@ -1,10 +1,10 @@
 import React from "react";
-import Footer from "../components/footer";
-import Navigation from "../components/navigation";
+import Footer from "./footer";
+import Navigation from "./navigation";
 import Head from "./head";
 import "../styles/styles.sass";
 
-export default (props) => (
+export default (props: any) => (
   <>
     <Head {...props} />
     <div id="page-container">
