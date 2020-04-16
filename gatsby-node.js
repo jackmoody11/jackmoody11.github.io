@@ -21,19 +21,44 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const blogTemplate = path.resolve("./src/templates/blog.js");
   const eulerTemplate = path.resolve("./src/templates/euler.js");
 
-  // Get markdown data
-  const query = await graphql(`
-    {
-      allMdx {
+  const eulerQuery = await graphql(`
+    query {
+      allMdx(
+        filter: { frontmatter: { posttype: { eq: "euler" } } }
+        sort: { fields: [fields___slug], order: ASC }
+      ) {
         edges {
           node {
+            frontmatter {
+              title
+              date
+              tags
+            }
             fields {
               slug
             }
+          }
+        }
+      }
+    }
+  `);
+
+  // Get markdown data
+  const blogQuery = await graphql(`
+    query {
+      allMdx(
+        filter: { frontmatter: { posttype: { eq: "blog" } } }
+        sort: { fields: [fields___slug], order: ASC }
+      ) {
+        edges {
+          node {
             frontmatter {
-              posttype
+              title
               date
               tags
+            }
+            fields {
+              slug
             }
           }
         }
@@ -41,25 +66,40 @@ module.exports.createPages = async ({ graphql, actions }) => {
     }
   `);
   // Create new pages
-  const posts = query.data.allMdx.edges;
+  const blogPosts = blogQuery.data.allMdx.edges;
+  const eulerPosts = eulerQuery.data.allMdx.edges;
 
-  posts.forEach(({ node }, index) => {
-    if (node.frontmatter.posttype === "blog") {
-      createPage({
-        component: blogTemplate,
-        path: `blog${node.fields.slug}`,
-        context: {
-          slug: node.fields.slug,
-        },
-      });
-    } else if (node.frontmatter.posttype === "euler") {
-      createPage({
-        component: eulerTemplate,
-        path: `euler${node.fields.slug}`,
-        context: {
-          slug: node.fields.slug,
-        },
-      });
-    }
+  blogPosts.forEach(({ node }, index) => {
+    // pagination
+    const prev = index === 0 ? false : blogPosts[index - 1].node;
+    const next =
+      index === blogPosts.length - 1 ? false : blogPosts[index + 1].node;
+
+    createPage({
+      component: blogTemplate,
+      path: `blog${node.fields.slug}`,
+      context: {
+        slug: node.fields.slug,
+        prev: prev,
+        next: next,
+      },
+    });
+  });
+
+  eulerPosts.forEach(({ node }, index) => {
+    // pagination for link to next solution
+    const prev = index === 0 ? false : eulerPosts[index - 1].node;
+    const next =
+      index === eulerPosts.length - 1 ? false : eulerPosts[index + 1].node;
+
+    createPage({
+      component: eulerTemplate,
+      path: `euler${node.fields.slug}`,
+      context: {
+        slug: node.fields.slug,
+        prev: prev,
+        next: next,
+      },
+    });
   });
 };
