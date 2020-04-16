@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "gatsby build",
+    "clean": "gatsby clean",
     "develop": "env-cmd -f .env gatsby develop",
     "deploy": "gatsby build && gh-pages -d public -b master -r https://$ACCESS_TOKEN@github.com/jackmoody11/jackmoody11.github.io.git",
     "start": "npm run develop",
