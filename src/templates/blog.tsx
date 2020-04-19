@@ -3,7 +3,7 @@ import { graphql, Link } from "gatsby";
 import moment from "moment";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
-import Layout from "../components/layout";
+import Layout from "../components/Layout";
 
 export const query = graphql`
   query($slug: String!) {
@@ -22,7 +22,12 @@ export const query = graphql`
   }
 `;
 
-const Blog = ({ data: { mdx }, pageContext }) => {
+type BlogTemplate = {
+  data: any;
+  pageContext: any;
+}
+
+const Blog = ({ data: { mdx }, pageContext }: BlogTemplate) => {
   const { next, prev } = pageContext;
 
   let prevLink =
@@ -52,7 +57,7 @@ const Blog = ({ data: { mdx }, pageContext }) => {
           <div className="col-md-8 blog-main">
             <div className="blog-post">
               <h1 className="blog-post-title">{mdx.frontmatter.title}</h1>
-              {mdx.frontmatter.tags.map((tag) => (
+              {mdx.frontmatter.tags.map((tag: string) => (
                 <span className="badge badge-light">{tag}</span>
               ))}
               <br />

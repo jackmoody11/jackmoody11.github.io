@@ -1,6 +1,6 @@
 import React from "react";
 import { useStaticQuery, Link, graphql } from "gatsby";
-import Layout from "../components/layout";
+import Layout from "../components/Layout";
 
 interface Project {
   solutionExists: boolean;

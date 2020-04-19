@@ -1,8 +1,9 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { Helmet } from "react-helmet";
-import Logo from "../static/img/jackmoody_logo.png";
 import "../styles/styles.sass";
+
+const Logo =  require("../static/img/jackmoody_logo.png");
 
 interface IHead {
   title: string;

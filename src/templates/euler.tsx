@@ -2,9 +2,9 @@ import React from "react";
 import { graphql, Link } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
-import Layout from "../components/layout";
-import EulerNotes from "../components/euler/euler_notes";
-import EulerCode from "../components/euler/euler_code";
+import Layout from "../components/Layout";
+import EulerNotes from "../components/euler/EulerNotes";
+import EulerCode from "../components/euler/EulerCode";
 
 export const query = graphql`
   query($slug: String!) {
@@ -23,7 +23,12 @@ export const query = graphql`
   }
 `;
 
-const Euler = ({ data: { mdx }, pageContext }) => {
+type EulerProps = {
+  data: any;
+  pageContext: any;
+}
+
+const Euler = ({ data: { mdx }, pageContext }: EulerProps) => {
   const { next, prev } = pageContext;
   let prevLink =
     prev === false ? null : (

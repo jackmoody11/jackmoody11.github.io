@@ -1,7 +1,7 @@
 import React from "react";
 import projects from "../content/projects.json";
-import ProjectCard from "../components/projects/project_card";
-import Layout from "../components/layout";
+import ProjectCard from "../components/projects/ProjectCard";
+import Layout from "../components/Layout";
 
 export default class ProjectPage extends React.Component {
   allProjects: any;
