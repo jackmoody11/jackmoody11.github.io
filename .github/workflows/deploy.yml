@@ -2,8 +2,9 @@ name: Gatsby Publish
 
 on:
   push:
-    branches:
-      - gatsby
+    branches: [gatsby]
+  pull_request:
+    branches: [gatsby]
 
 jobs:
   build:
