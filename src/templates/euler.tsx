@@ -37,7 +37,7 @@ const Euler = ({ data: { mdx }, pageContext }: EulerProps) => {
     prev === false ? null : (
       <Link
         to={`euler${prev.fields.slug}`}
-        className="btn btn-primary"
+        className="btn btn-primary mr-auto"
         role="button"
       >
         Previous
@@ -47,7 +47,7 @@ const Euler = ({ data: { mdx }, pageContext }: EulerProps) => {
     next === false ? null : (
       <Link
         to={`euler${next.fields.slug}`}
-        className="btn btn-primary"
+        className="btn btn-primary ml-auto"
         role="button"
       >
         Next
@@ -65,7 +65,7 @@ const Euler = ({ data: { mdx }, pageContext }: EulerProps) => {
       <MDXRenderer>{mdx.body}</MDXRenderer>
       <EulerCode problemNumber={problemNumber} />
       <EulerNotes />
-      <div className="d-flex justify-content-between">
+      <div className="row">
         {prevLink}
         {nextLink}
       </div>

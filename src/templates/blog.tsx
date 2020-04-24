@@ -25,7 +25,7 @@ export const query = graphql`
 type BlogTemplate = {
   data: any;
   pageContext: any;
-}
+};
 
 const Blog = ({ data: { mdx }, pageContext }: BlogTemplate) => {
   const { next, prev } = pageContext;
@@ -34,7 +34,7 @@ const Blog = ({ data: { mdx }, pageContext }: BlogTemplate) => {
     prev === false ? null : (
       <Link
         to={`blog${prev.fields.slug}`}
-        className="btn btn-primary"
+        className="btn btn-primary mr-auto"
         role="button"
       >
         Previous
@@ -44,7 +44,7 @@ const Blog = ({ data: { mdx }, pageContext }: BlogTemplate) => {
     next === false ? null : (
       <Link
         to={`blog${next.fields.slug}`}
-        className="btn btn-primary"
+        className="btn btn-primary ml-auto"
         role="button"
       >
         Next
@@ -67,7 +67,7 @@ const Blog = ({ data: { mdx }, pageContext }: BlogTemplate) => {
               </small>
               <hr />
               <MDXRenderer>{mdx.body}</MDXRenderer>
-              <div className="d-flex justify-content-between">
+              <div className="row">
                 {prevLink}
                 {nextLink}
               </div>
