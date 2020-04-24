@@ -8,15 +8,7 @@ module.exports = {
   plugins: [
     "gatsby-plugin-sass",
     "gatsby-plugin-react-helmet",
-    {
-      resolve: "gatsby-plugin-typescript",
-      options: {
-        // This seemed to not mix well with MDX
-        // isTSX: true,
-        // jsxPragma: "jsx",
-        // allExtensions: true,
-      },
-    },
+    "gatsby-plugin-typescript",
     {
       resolve: "gatsby-source-filesystem",
       options: {
