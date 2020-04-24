@@ -54,10 +54,16 @@ const Euler = ({ data: { mdx }, pageContext }: EulerProps) => {
       </Link>
     );
 
+  /*
+   * Slug will be of the form "/problem-xyz/"
+   * Split at "-" leaving ["/problem", "xyz/"] then take xyz from second item in array
+   */
+  let problemNumber: string = mdx.fields.slug.split("-")[1].slice(0, -1);
+
   return (
     <Layout title={mdx.frontmatter.title}>
       <MDXRenderer>{mdx.body}</MDXRenderer>
-      <EulerCode problemNumber={mdx.fields.slug.split("-")[1].slice(0, -1)} />
+      <EulerCode problemNumber={problemNumber} />
       <EulerNotes />
       <div className="d-flex justify-content-between">
         {prevLink}
