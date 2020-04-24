@@ -12,6 +12,9 @@ export const query = graphql`
       fields: { slug: { eq: $slug } }
       frontmatter: { posttype: { eq: "euler" } }
     ) {
+      fields {
+        slug
+      }
       frontmatter {
         posttype
         tags
@@ -26,7 +29,7 @@ export const query = graphql`
 type EulerProps = {
   data: any;
   pageContext: any;
-}
+};
 
 const Euler = ({ data: { mdx }, pageContext }: EulerProps) => {
   const { next, prev } = pageContext;
@@ -50,10 +53,11 @@ const Euler = ({ data: { mdx }, pageContext }: EulerProps) => {
         Next
       </Link>
     );
+
   return (
     <Layout title={mdx.frontmatter.title}>
       <MDXRenderer>{mdx.body}</MDXRenderer>
-      <EulerCode />
+      <EulerCode problemNumber={mdx.fields.slug.split("-")[1].slice(0, -1)} />
       <EulerNotes />
       <div className="d-flex justify-content-between">
         {prevLink}
