@@ -3,7 +3,7 @@ import { graphql, Link } from "gatsby";
 import moment from "moment";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
-import Layout from "../components/layout";
+import Layout from "../components/Layout";
 
 export const query = graphql`
   query($slug: String!) {
@@ -22,14 +22,19 @@ export const query = graphql`
   }
 `;
 
-const Blog = ({ data: { mdx }, pageContext }) => {
+type BlogTemplate = {
+  data: any;
+  pageContext: any;
+};
+
+const Blog = ({ data: { mdx }, pageContext }: BlogTemplate) => {
   const { next, prev } = pageContext;
 
   let prevLink =
     prev === false ? null : (
       <Link
         to={`blog${prev.fields.slug}`}
-        className="btn btn-primary"
+        className="btn btn-primary mr-auto"
         role="button"
       >
         Previous
@@ -39,7 +44,7 @@ const Blog = ({ data: { mdx }, pageContext }) => {
     next === false ? null : (
       <Link
         to={`blog${next.fields.slug}`}
-        className="btn btn-primary"
+        className="btn btn-primary ml-auto"
         role="button"
       >
         Next
@@ -52,7 +57,7 @@ const Blog = ({ data: { mdx }, pageContext }) => {
           <div className="col-md-8 blog-main">
             <div className="blog-post">
               <h1 className="blog-post-title">{mdx.frontmatter.title}</h1>
-              {mdx.frontmatter.tags.map((tag) => (
+              {mdx.frontmatter.tags.map((tag: string) => (
                 <span className="badge badge-light">{tag}</span>
               ))}
               <br />
@@ -62,7 +67,7 @@ const Blog = ({ data: { mdx }, pageContext }) => {
               </small>
               <hr />
               <MDXRenderer>{mdx.body}</MDXRenderer>
-              <div className="d-flex justify-content-between">
+              <div className="row">
                 {prevLink}
                 {nextLink}
               </div>

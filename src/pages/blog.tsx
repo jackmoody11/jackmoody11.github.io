@@ -1,8 +1,8 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 
-import Layout from "../components/layout";
-import BlogPostCard from "../components/blog/blog_post_card";
+import Layout from "../components/Layout";
+import BlogPostCard from "../components/blog/BlogPostCard";
 
 const BlogPage = () => {
   const data = useStaticQuery(graphql`
@@ -37,7 +37,7 @@ const BlogPage = () => {
           </div>
         </div>
         <div className="card-deck">
-          {data.allMdx.edges.map((edge) => (
+          {data.allMdx.edges.map((edge: { node: any; }) => (
             <BlogPostCard edge={edge} />
           ))}
         </div>

@@ -9,6 +9,15 @@ module.exports = {
     "gatsby-plugin-sass",
     "gatsby-plugin-react-helmet",
     {
+      resolve: "gatsby-plugin-typescript",
+      options: {
+        // This seemed to not mix well with MDX
+        // isTSX: true,
+        // jsxPragma: "jsx",
+        // allExtensions: true,
+      },
+    },
+    {
       resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/src/content/blog`,

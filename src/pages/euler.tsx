@@ -1,10 +1,14 @@
 import React from "react";
 import { useStaticQuery, Link, graphql } from "gatsby";
-import Layout from "../components/layout";
+import Layout from "../components/Layout";
+
+interface Project {
+  solutionExists: boolean;
+}
 
 const EulerMainPage = () => (
   <Layout title="Project Euler">
-    <ProjectEulerInfoCard title="About">
+    <ProjectEulerInfoCard title="About" table={null}>
       Project Euler is a community where those who are interested in programming
       and/or solving math problems can put their knowledge to the test and learn
       more along the way. More info can be found at
@@ -27,7 +31,7 @@ const EulerMainPage = () => (
   </Layout>
 );
 
-const ProjectEulerInfoCard = (props) => (
+const ProjectEulerInfoCard = (props: { title: React.ReactNode; children: React.ReactNode; table: {} | null | undefined; }) => (
   <div className="card mb-3" id="card-left-border">
     <div className="card-body">
       <h2 className="card-title">{props.title}</h2>
@@ -75,7 +79,7 @@ const ProjectEulerSolutionTable = () => {
         </tr>
       </thead>
       <tbody>
-        {solutions.map((solution) => {
+        {solutions.map((solution: { node: { fields: { slug: string; }; frontmatter: { tags: string[]; }; }; }) => {
           const slugArr = solution.node.fields.slug.split("-");
           let problemNumber = slugArr[slugArr.length - 1];
           problemNumber = problemNumber.substring(0, problemNumber.length - 1);
@@ -90,21 +94,21 @@ const ProjectEulerSolutionTable = () => {
               <td>
                 <SolutionExistsIcon
                   solutionExists={solution.node.frontmatter.tags
-                    .map((tag) => tag.toLowerCase())
+                    .map((tag: string) => tag.toLowerCase())
                     .includes("python")}
                 />
               </td>
               <td>
                 <SolutionExistsIcon
                   solutionExists={solution.node.frontmatter.tags
-                    .map((tag) => tag.toLowerCase())
+                    .map((tag: string) => tag.toLowerCase())
                     .includes("java")}
                 />
               </td>
               <td>
                 <SolutionExistsIcon
                   solutionExists={solution.node.frontmatter.tags
-                    .map((tag) => tag.toLowerCase())
+                    .map((tag: string) => tag.toLowerCase())
                     .includes("c")}
                 />
               </td>
@@ -116,7 +120,7 @@ const ProjectEulerSolutionTable = () => {
   );
 };
 
-const SolutionExistsIcon = ({ solutionExists }) => (
+const SolutionExistsIcon = ({ solutionExists} : Project) => (
   <i
     className={
       solutionExists

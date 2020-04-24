@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "../card";
+import Card from "../Card";
 
 export default () => {
   const message = (
@@ -10,7 +10,7 @@ export default () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <i class="fab fa-github"></i> GitHub here
+        <i className="fab fa-github"></i> GitHub here
       </a>
     </p>
   );

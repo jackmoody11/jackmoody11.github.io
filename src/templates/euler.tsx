@@ -2,9 +2,9 @@ import React from "react";
 import { graphql, Link } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
-import Layout from "../components/layout";
-import EulerNotes from "../components/euler/euler_notes";
-import EulerCode from "../components/euler/euler_code";
+import Layout from "../components/Layout";
+import EulerNotes from "../components/euler/EulerNotes";
+import EulerCode from "../components/euler/EulerCode";
 
 export const query = graphql`
   query($slug: String!) {
@@ -12,6 +12,9 @@ export const query = graphql`
       fields: { slug: { eq: $slug } }
       frontmatter: { posttype: { eq: "euler" } }
     ) {
+      fields {
+        slug
+      }
       frontmatter {
         posttype
         tags
@@ -23,13 +26,18 @@ export const query = graphql`
   }
 `;
 
-const Euler = ({ data: { mdx }, pageContext }) => {
+type EulerProps = {
+  data: any;
+  pageContext: any;
+};
+
+const Euler = ({ data: { mdx }, pageContext }: EulerProps) => {
   const { next, prev } = pageContext;
   let prevLink =
     prev === false ? null : (
       <Link
         to={`euler${prev.fields.slug}`}
-        className="btn btn-primary"
+        className="btn btn-primary mr-auto"
         role="button"
       >
         Previous
@@ -39,18 +47,25 @@ const Euler = ({ data: { mdx }, pageContext }) => {
     next === false ? null : (
       <Link
         to={`euler${next.fields.slug}`}
-        className="btn btn-primary"
+        className="btn btn-primary ml-auto"
         role="button"
       >
         Next
       </Link>
     );
+
+  /*
+   * Slug will be of the form "/problem-xyz/"
+   * Split at "-" leaving ["/problem", "xyz/"] then take xyz from second item in array
+   */
+  let problemNumber: string = mdx.fields.slug.split("-")[1].slice(0, -1);
+
   return (
     <Layout title={mdx.frontmatter.title}>
       <MDXRenderer>{mdx.body}</MDXRenderer>
-      <EulerCode />
+      <EulerCode problemNumber={problemNumber} />
       <EulerNotes />
-      <div className="d-flex justify-content-between">
+      <div className="row">
         {prevLink}
         {nextLink}
       </div>

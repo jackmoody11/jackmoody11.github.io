@@ -18,8 +18,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
   // Get path to template
-  const blogTemplate = path.resolve("./src/templates/blog.js");
-  const eulerTemplate = path.resolve("./src/templates/euler.js");
+  const blogTemplate = path.resolve("./src/templates/blog.tsx");
+  const eulerTemplate = path.resolve("./src/templates/euler.tsx");
 
   const eulerQuery = await graphql(`
     query {

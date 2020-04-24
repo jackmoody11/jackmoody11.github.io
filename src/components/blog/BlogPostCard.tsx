@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import moment from "moment";
 
-const BlogPostCard = ({ edge: { node } }) => (
+const BlogPostCard = ({ edge: { node } }: any) => (
   <div className="card">
     <img
       className="card-img-top"
@@ -11,7 +11,7 @@ const BlogPostCard = ({ edge: { node } }) => (
     />
     <div className="card-body">
       <h5 className="card-title">{node.frontmatter.title}</h5>
-      {node.frontmatter.tags.map((tag) => (
+      {node.frontmatter.tags.map((tag: string) => (
         <span className="badge badge-light">{tag}</span>
       ))}
       <p className="card-text mt-1">{node.excerpt}</p>

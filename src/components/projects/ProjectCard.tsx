@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import projectCardStyles from "./project_card.module.sass";
 
-const ProjectCard = ({ project }) => (
+const ProjectCard = ({ project }: any) => (
   <div className="col-lg-4 project-card-container mb-3">
     <Card project={project}>
       <div className="card-body">
@@ -25,7 +25,7 @@ const ProjectCard = ({ project }) => (
   </div>
 );
 
-const Card = props => {
+const Card = (props: any) => {
   // Outline border with card internals (used for final card)
   var starred_id = props.project.starred ? projectCardStyles.cardBorder : "";
   return (
@@ -35,11 +35,15 @@ const Card = props => {
   );
 };
 
-const ProjectTags = ({ project }) => {
+type Project = {
+  tags: string[];
+}
+
+const ProjectTags = ({ project }: any) => {
   // All project tags as badges
   return (
     <div>
-      {project.tags.map(tag => (
+      {project.tags.map((tag: string) => (
         <span className={"badge badge-light " + projectCardStyles.filterBadge}>
           {tag}
         </span>
@@ -48,7 +52,7 @@ const ProjectTags = ({ project }) => {
   );
 };
 
-const ProjectEulerSolutionsButton = ({ project }) => {
+const ProjectEulerSolutionsButton = ({ project }: any) => {
   // Button for link to main Project Euler solutions page
   if (project.name.toLowerCase().includes("project euler")) {
     return (
@@ -61,7 +65,7 @@ const ProjectEulerSolutionsButton = ({ project }) => {
   }
 };
 
-const ProjectDocsButton = ({ project }) => {
+const ProjectDocsButton = ({ project }: any) => {
   // Button for link to documentation of project
   if (project.hasOwnProperty("docs")) {
     return (
