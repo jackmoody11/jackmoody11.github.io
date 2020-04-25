@@ -71,9 +71,9 @@ module.exports.createPages = async ({ graphql, actions }) => {
 
   blogPosts.forEach(({ node }, index) => {
     // pagination
-    const prev = index === 0 ? false : blogPosts[index - 1].node;
+    const prev = index === 0 ? null : blogPosts[index - 1].node;
     const next =
-      index === blogPosts.length - 1 ? false : blogPosts[index + 1].node;
+      index === blogPosts.length - 1 ? null : blogPosts[index + 1].node;
 
     createPage({
       component: blogTemplate,
@@ -88,9 +88,9 @@ module.exports.createPages = async ({ graphql, actions }) => {
 
   eulerPosts.forEach(({ node }, index) => {
     // pagination for link to next solution
-    const prev = index === 0 ? false : eulerPosts[index - 1].node;
+    const prev = index === 0 ? null : eulerPosts[index - 1].node;
     const next =
-      index === eulerPosts.length - 1 ? false : eulerPosts[index + 1].node;
+      index === eulerPosts.length - 1 ? null : eulerPosts[index + 1].node;
 
     createPage({
       component: eulerTemplate,

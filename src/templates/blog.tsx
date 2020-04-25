@@ -31,7 +31,7 @@ const Blog = ({ data: { mdx }, pageContext }: BlogTemplate) => {
   const { next, prev } = pageContext;
 
   let prevLink =
-    prev === false ? null : (
+    prev === null ? null : (
       <Link
         to={`blog${prev.fields.slug}`}
         className="btn btn-primary mr-auto"
@@ -41,7 +41,7 @@ const Blog = ({ data: { mdx }, pageContext }: BlogTemplate) => {
       </Link>
     );
   let nextLink =
-    next === false ? null : (
+    next === null ? null : (
       <Link
         to={`blog${next.fields.slug}`}
         className="btn btn-primary ml-auto"
