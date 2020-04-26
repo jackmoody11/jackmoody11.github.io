@@ -5,6 +5,8 @@
 
 This is the repo for my personal website. This site uses the following technologies:
 
-- React/Gatsby.js
-- Javascript for making AJAX calls to render code for Project Euler problems (currently working on Typescript)
-- Bootstrap (for CSS styling and grid system)
+- React.js
+- Gatsby.js
+- Typescript
+- Bootstrap 4
+- GitHub Pages

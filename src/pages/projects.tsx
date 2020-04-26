@@ -2,7 +2,6 @@ import React from "react";
 import { projects } from "../content/projects.json";
 import ProjectCard from "../components/projects/ProjectCard";
 import Layout from "../components/Layout";
-import FadingAlert from "../components/FadingAlert";
 import "../styles/styles.sass";
 
 interface Project {
@@ -65,7 +64,6 @@ export default class ProjectPage extends React.Component {
   render() {
     return (
       <Layout title="Projects">
-        <FadingAlert message='Click on badges to filter by subject (e.g. "Python")' />
         <h1>Projects</h1>
         <hr />
         <div className="mb-3" id="tag-filters">
