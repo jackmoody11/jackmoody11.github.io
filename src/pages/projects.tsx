@@ -2,6 +2,7 @@ import React from "react";
 import { projects } from "../content/projects.json";
 import ProjectCard from "../components/projects/ProjectCard";
 import Layout from "../components/Layout";
+import "../styles/styles.sass";
 
 interface Project {
   name: string;
@@ -67,13 +68,16 @@ export default class ProjectPage extends React.Component {
         <hr />
         <div className="mb-3" id="tag-filters">
           {this.state.filters.map((filter: any, index: number) => (
-            <span
-              className="badge badge-light p-1"
-              onClick={this.removeFilter}
-              key={`filter-${index}`}
-            >
-              {filter}
-            </span>
+            <>
+              <span
+                className="badge badge-light p-1 m-1"
+                onClick={this.removeFilter}
+                key={`filter-${index}`}
+              >
+                {filter}
+                <i className="far fa-times-circle p-1 close-btn"></i>
+              </span>
+            </>
           ))}
         </div>
         <div className="card-deck card-columns mb-3">
