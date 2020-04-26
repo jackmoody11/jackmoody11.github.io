@@ -34,7 +34,6 @@ export default class ProjectPage extends React.Component {
 
   removeFilter(e: any) {
     const filter = e.currentTarget.textContent;
-    console.log(this.state.filters);
     const updatedFilters = this.state.filters.filter(
       (f: string) => f !== filter
     );
@@ -44,7 +43,6 @@ export default class ProjectPage extends React.Component {
         return updatedFilters.every((f: string) => project.tags.includes(f));
       }),
     });
-    console.log(this.state.filters);
   }
 
   addFilter(e: any) {
