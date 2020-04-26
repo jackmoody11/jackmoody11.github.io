@@ -34,7 +34,7 @@ type EulerProps = {
 const Euler = ({ data: { mdx }, pageContext }: EulerProps) => {
   const { next, prev } = pageContext;
   let prevLink =
-    prev === false ? null : (
+    prev === null ? null : (
       <Link
         to={`euler${prev.fields.slug}`}
         className="btn btn-primary mr-auto"
@@ -44,7 +44,7 @@ const Euler = ({ data: { mdx }, pageContext }: EulerProps) => {
       </Link>
     );
   let nextLink =
-    next === false ? null : (
+    next === null ? null : (
       <Link
         to={`euler${next.fields.slug}`}
         className="btn btn-primary ml-auto"

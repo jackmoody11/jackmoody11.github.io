@@ -2,7 +2,7 @@ import React from "react";
 import Card from "../Card";
 
 export default () => {
-  const message = (
+  const message: React.ReactNode = (
     <p>
       The full <code>utils</code> module can be found on{" "}
       <a
