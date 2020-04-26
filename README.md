@@ -5,10 +5,8 @@
 
 This is the repo for my personal website. This site uses the following technologies:
 
-| Technology                   |
-| ---------------------------- |
-| ![](./assets/bootstrap.png)  |
-| ![](./assets/react.png)      |
-| ![](./assets/gatsby.png)     |
-| ![](./assets/typescript.png) |
-| ![](./assets/gh-pages.png)   |
+- React.js
+- Gatsby.js
+- Typescript
+- Bootstrap 4
+- GitHub Pages
