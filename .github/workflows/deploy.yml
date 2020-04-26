@@ -3,6 +3,8 @@ name: Gatsby Publish
 on:
   push:
     branches: [gatsby]
+  pull_request:
+    branches: [gatsby]
 
 jobs:
   build:
