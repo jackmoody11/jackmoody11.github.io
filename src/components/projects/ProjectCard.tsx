@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "gatsby";
 import projectCardStyles from "./project_card.module.sass";
 
-const ProjectCard = ({ project }: any) => (
+const ProjectCard = ({ project, onFilterClick }: any) => (
   <div className="col-lg-4 project-card-container mb-3">
     <Card project={project}>
       <div className="card-body">
         <h5 className="card-title">{project.name}</h5>
-        <ProjectTags project={project} />
+        <ProjectTags project={project} onTagClick={onFilterClick} />
 
         <p className="card-text py-3">{project.description}</p>
         <ProjectEulerSolutionsButton project={project} />
@@ -37,14 +37,18 @@ const Card = (props: any) => {
 
 type Project = {
   tags: string[];
-}
+};
 
-const ProjectTags = ({ project }: any) => {
+const ProjectTags = ({ project, onTagClick }: any) => {
   // All project tags as badges
   return (
     <div>
-      {project.tags.map((tag: string) => (
-        <span className={"badge badge-light " + projectCardStyles.filterBadge}>
+      {project.tags.map((tag: string, index: number) => (
+        <span
+          className={"badge badge-light " + projectCardStyles.filterBadge}
+          onClick={onTagClick}
+          key={index}
+        >
           {tag}
         </span>
       ))}

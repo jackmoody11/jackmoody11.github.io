@@ -7,7 +7,7 @@ import * as Logo from "../static/img/jackmoody_logo.png";
 
 interface IHead {
   title: string;
-  lang: string;
+  lang?: string;
   description: string;
 }
 

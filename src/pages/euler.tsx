@@ -31,7 +31,11 @@ const EulerMainPage = () => (
   </Layout>
 );
 
-const ProjectEulerInfoCard = (props: { title: React.ReactNode; children: React.ReactNode; table: {} | null | undefined; }) => (
+const ProjectEulerInfoCard = (props: {
+  title: React.ReactNode;
+  children: React.ReactNode;
+  table: {} | null | undefined;
+}) => (
   <div className="card mb-3" id="card-left-border">
     <div className="card-body">
       <h2 className="card-title">{props.title}</h2>
@@ -79,48 +83,55 @@ const ProjectEulerSolutionTable = () => {
         </tr>
       </thead>
       <tbody>
-        {solutions.map((solution: { node: { fields: { slug: string; }; frontmatter: { tags: string[]; }; }; }) => {
-          const slugArr = solution.node.fields.slug.split("-");
-          let problemNumber = slugArr[slugArr.length - 1];
-          problemNumber = problemNumber.substring(0, problemNumber.length - 1);
+        {solutions.map(
+          (solution: {
+            node: { fields: { slug: string }; frontmatter: { tags: string[] } };
+          }) => {
+            const slugArr = solution.node.fields.slug.split("-");
+            let problemNumber = slugArr[slugArr.length - 1];
+            problemNumber = problemNumber.substring(
+              0,
+              problemNumber.length - 1
+            );
 
-          return (
-            <tr>
-              <th scope="row">
-                <Link to={`euler/${solution.node.fields.slug}`}>
-                  {problemNumber}
-                </Link>
-              </th>
-              <td>
-                <SolutionExistsIcon
-                  solutionExists={solution.node.frontmatter.tags
-                    .map((tag: string) => tag.toLowerCase())
-                    .includes("python")}
-                />
-              </td>
-              <td>
-                <SolutionExistsIcon
-                  solutionExists={solution.node.frontmatter.tags
-                    .map((tag: string) => tag.toLowerCase())
-                    .includes("java")}
-                />
-              </td>
-              <td>
-                <SolutionExistsIcon
-                  solutionExists={solution.node.frontmatter.tags
-                    .map((tag: string) => tag.toLowerCase())
-                    .includes("c")}
-                />
-              </td>
-            </tr>
-          );
-        })}
+            return (
+              <tr>
+                <th scope="row">
+                  <Link to={`euler${solution.node.fields.slug}`}>
+                    {problemNumber}
+                  </Link>
+                </th>
+                <td>
+                  <SolutionExistsIcon
+                    solutionExists={solution.node.frontmatter.tags
+                      .map((tag: string) => tag.toLowerCase())
+                      .includes("python")}
+                  />
+                </td>
+                <td>
+                  <SolutionExistsIcon
+                    solutionExists={solution.node.frontmatter.tags
+                      .map((tag: string) => tag.toLowerCase())
+                      .includes("java")}
+                  />
+                </td>
+                <td>
+                  <SolutionExistsIcon
+                    solutionExists={solution.node.frontmatter.tags
+                      .map((tag: string) => tag.toLowerCase())
+                      .includes("c")}
+                  />
+                </td>
+              </tr>
+            );
+          }
+        )}
       </tbody>
     </table>
   );
 };
 
-const SolutionExistsIcon = ({ solutionExists} : Project) => (
+const SolutionExistsIcon = ({ solutionExists }: Project) => (
   <i
     className={
       solutionExists
