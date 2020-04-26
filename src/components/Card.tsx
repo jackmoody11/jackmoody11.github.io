@@ -3,7 +3,7 @@ import React from "react";
 interface ICard {
   title: string;
   tags?: string[];
-  text?: string;
+  text?: string | React.ReactNode;
   textMuted?: string;
   children?: any;
 }
