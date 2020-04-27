@@ -1,4 +1,7 @@
 import React from "react";
+import Card from "react-bootstrap/Card";
+import Badge from "react-bootstrap/Badge";
+import Row from "react-bootstrap/Row";
 
 interface ICard {
   title: string;
@@ -9,13 +12,13 @@ interface ICard {
 }
 
 export default (props: ICard) => (
-  <div className="row">
-    <div className="card" id="card-left-border">
-      <div className="card-body">
-        <h5 className="card-title">{props.title}</h5>
+  <Row>
+    <Card id="card-left-border">
+      <Card.Body>
+        <Card.Title>{props.title}</Card.Title>
         {props.tags !== undefined
           ? props.tags.map((tag: string) => (
-              <span className="badge badge-light">{tag}</span>
+              <Badge variant="light">{tag}</Badge>
             ))
           : null}
         <p className="card-text mt-1">{props.text}</p>
@@ -23,7 +26,7 @@ export default (props: ICard) => (
           <small className="text-muted">{props.textMuted}</small>
         </p>
         {props.children}
-      </div>
-    </div>
-  </div>
+      </Card.Body>
+    </Card>
+  </Row>
 );

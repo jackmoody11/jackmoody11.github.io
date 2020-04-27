@@ -27,17 +27,15 @@ const BlogPage = () => {
 
   return (
     <Layout title="Blog">
-      <div className="container mb-3">
+      <div className="container">
         <div className="jumbotron p-3 p-md-5 text-white rounded bg-dark">
-          <div className="col-md-6 px-0">
+          <div className="col-md-6">
             <h1 className="display-4 font-italic">Coming Soon</h1>
-            <p className="lead my-3">
-              This blog is currently a work-in-progress.
-            </p>
+            <p className="lead">This blog is currently a work-in-progress.</p>
           </div>
         </div>
         <div className="card-deck">
-          {data.allMdx.edges.map((edge: { node: any; }) => (
+          {data.allMdx.edges.map((edge: { node: any }) => (
             <BlogPostCard edge={edge} />
           ))}
         </div>

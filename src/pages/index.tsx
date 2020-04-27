@@ -11,7 +11,7 @@ export default () => (
           Welcome to my site! You can find some of my work and learn more about
           what I do.
         </p>
-        <hr className="my-4" />
+        <hr className="py-4" />
         <p className="lead">
           <Link className="btn btn-primary btn-lg" to="/projects" role="button">
             My Projects

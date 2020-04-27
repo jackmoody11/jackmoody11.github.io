@@ -1,38 +1,30 @@
 import React from "react";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import Container from "react-bootstrap/Container";
 import { Link } from "gatsby";
 
-const LogoSVG = require("../static/jackmoody_logo.svg");
+import LogoSVG from "../static/jackmoody_logo.svg";
 
 export default () => (
-  <nav className="navbar navbar-expand-lg navbar-light bg-light pb-2">
-    <Link to="/" className="navbar-brand ml-5">
-      <img
-        src={LogoSVG}
-        width="50"
-        height="50"
-        alt="Jack Signature Logo"
-        id="jackmoody_logo"
-      />
-    </Link>
-    <button
-    className="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent"
-    aria-expanded="false"
-    aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-      <div className="navbar-nav">
-        <Link className="nav-item nav-link" to="/projects">
-          Projects
-        </Link>
-        <Link className="nav-item nav-link" to="/blog">
-          Blog
-        </Link>
-      </div>
-    </div>
-  </nav>
+  <Navbar variant="light" bg="light" expand="md">
+    <Container>
+      <Navbar.Brand href="/">
+        <img
+          src={LogoSVG}
+          width="50"
+          height="50"
+          alt="Jack Signature Logo"
+          id="jackmoody_logo"
+        />
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="mr-auto">
+          <Nav.Link href="/projects">Projects</Nav.Link>
+          <Nav.Link href="/blog">Blog</Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
+    </Container>
+  </Navbar>
 );

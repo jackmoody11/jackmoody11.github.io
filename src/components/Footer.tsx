@@ -3,7 +3,7 @@ import footerStyles from "./footer.module.sass";
 
 export default () => {
   return (
-    <footer className={"mt-2 " + footerStyles.footer}>
+    <footer className={footerStyles.footer}>
       <div className="row text-center">
         <div className="col-6 offset-3">
           <span className="text-muted">&copy; Jack Moody 2020</span>
