@@ -1,14 +1,16 @@
 import React from "react";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import footerStyles from "./footer.module.sass";
 
 export default () => {
   return (
     <footer className={footerStyles.footer}>
-      <div className="row text-center">
-        <div className="col-6 offset-3">
+      <Row className="text-center">
+        <Col xs={{ offset: 3, span: 6 }}>
           <span className="text-muted">&copy; Jack Moody 2020</span>
-        </div>
-        <div className={"col-3 p-0 " + footerStyles.socialIcons}>
+        </Col>
+        <Col xs={{ span: 3 }} className={footerStyles.socialIcons}>
           <a
             href="https://github.com/jackmoody11"
             target="_blank"
@@ -33,8 +35,8 @@ export default () => {
           >
             <i className="fab fa-stack-overflow"></i>
           </a>
-        </div>
-      </div>
+        </Col>
+      </Row>
     </footer>
   );
 };
