@@ -1,43 +1,23 @@
 import React from "react";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 import { Link } from "gatsby";
 import projectCardStyles from "./project_card.module.sass";
 
 const ProjectCard = ({ project, onFilterClick }: any) => (
   <div className="col-lg-4 project-card-container mb-3">
-    <Card project={project}>
-      <div className="card-body">
-        <h5 className="card-title">{project.name}</h5>
+    <Card>
+      <Card.Body>
+        <Card.Title>{project.name}</Card.Title>
         <ProjectTags project={project} onTagClick={onFilterClick} />
-
-        <p className="card-text py-3">{project.description}</p>
+        <Card.Text>{project.description}</Card.Text>
         <ProjectEulerSolutionsButton project={project} />
-        <a
-          href={project.url}
-          className="btn btn-primary mr-1"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Source
-        </a>
+        <Button href={project.url}>Source</Button>{" "}
         <ProjectDocsButton project={project} />
-      </div>
+      </Card.Body>
     </Card>
   </div>
 );
-
-const Card = (props: any) => {
-  // Outline border with card internals (used for final card)
-  var starred_id = props.project.starred ? projectCardStyles.cardBorder : "";
-  return (
-    <div className="card" id={starred_id}>
-      {props.children}
-    </div>
-  );
-};
-
-type Project = {
-  tags: string[];
-};
 
 const ProjectTags = ({ project, onTagClick }: any) => {
   // All project tags as badges
