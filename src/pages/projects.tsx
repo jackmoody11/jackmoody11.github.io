@@ -26,31 +26,35 @@ export default class ProjectPage extends React.Component {
     this.addFilter = this.addFilter.bind(this);
   }
 
-  removeFilter(e: any) {
-    const filter = e.currentTarget.textContent;
-    const updatedFilters = this.state.filters.filter(
-      (f: string) => f !== filter
-    );
-    this.setState({
-      filters: updatedFilters,
-      filteredProjects: this.allProjects.filter((project: Project) => {
-        return updatedFilters.every((f: string) => project.tags.includes(f));
-      }),
-    });
-  }
-
-  addFilter(e: any) {
-    const filter = e.currentTarget.textContent;
-    const updatedFilters = [...this.state.filters, filter];
-    if (!this.state.filters.includes(filter)) {
+  removeFilter(e: React.MouseEvent): void {
+    const filter = e?.currentTarget.textContent;
+    if (filter !== null) {
+      const updatedFilters = this.state.filters.filter(
+        (f: string) => f !== filter
+      );
       this.setState({
         filters: updatedFilters,
-        filteredProjects: this.state.filteredProjects.filter(
-          (project: Project) =>
-            // Check that every applied filter is in project
-            updatedFilters.every((f: string) => project.tags.includes(f))
-        ),
+        filteredProjects: this.allProjects.filter((project: Project) => {
+          return updatedFilters.every((f: string) => project.tags.includes(f));
+        }),
       });
+    }
+  }
+
+  addFilter(e: React.MouseEvent): void {
+    const filter = e?.currentTarget.textContent;
+    if (filter !== null) {
+      const updatedFilters = [...this.state.filters, filter];
+      if (!this.state.filters.includes(filter)) {
+        this.setState({
+          filters: updatedFilters,
+          filteredProjects: this.state.filteredProjects.filter(
+            (project: Project) =>
+              // Check that every applied filter is in project
+              updatedFilters.every((f: string) => project.tags.includes(f))
+          ),
+        });
+      }
     }
   }
 
