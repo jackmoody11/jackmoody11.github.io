@@ -1,26 +1,67 @@
-import React from "react";
+import React, { EventHandler } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import { Link } from "gatsby";
+import Project from "./Project";
 import projectCardStyles from "./project_card.module.sass";
 
-const ProjectCard = ({ project, onFilterClick }: any) => (
-  <div className="col-lg-4 project-card-container mb-3">
-    <Card>
-      <Card.Body>
-        <Card.Title>{project.name}</Card.Title>
-        <ProjectTags project={project} onTagClick={onFilterClick} />
-        <Card.Text>{project.description}</Card.Text>
-        <ProjectEulerSolutionsButton project={project} />
-        <Button href={project.url}>Source</Button>{" "}
-        <ProjectDocsButton project={project} />
-      </Card.Body>
-    </Card>
-  </div>
-);
+/*
+ * Interfaces
+ */
+interface IProjectCard {
+  project: Project;
+  onFilterClick(e: React.MouseEvent): any;
+}
 
-const ProjectTags = ({ project, onTagClick }: any) => {
-  // All project tags as badges
+interface IProjectTags {
+  project: Project;
+  onTagClick(e: React.MouseEvent): any;
+}
+
+interface IOnlyProject {
+  project: Project;
+}
+
+export default (props: IProjectCard) => {
+  /**
+   * Single `ProjectCard` component for projects page.
+   *
+   * @remarks
+   * Only intended to be used by the projects page.
+   *
+   * @param props - Only considers project and onFilterClick
+   * @returns ProjectCard component for projects page
+   */
+  const { project, onFilterClick } = props;
+  return (
+    <div className="col-lg-4 project-card-container mb-3">
+      <Card>
+        <Card.Body>
+          <Card.Title>{project.name}</Card.Title>
+          <ProjectTags project={project} onTagClick={onFilterClick} />
+          <Card.Text>{project.description}</Card.Text>
+          <ProjectEulerSolutionsButton project={project} />
+          <Button href={project.url}>Source</Button>{" "}
+          <ProjectDocsButton project={project} />
+        </Card.Body>
+      </Card>
+    </div>
+  );
+};
+
+/*
+ * Subcomponents
+ */
+const ProjectTags = (props: IProjectTags): JSX.Element => {
+  /**
+   * All project tags for single project.
+   *
+   * @remarks
+   * This component is only intended to be used by ProjectCard component.
+   *
+   * @param props - All given properties. Only `project` and `onTagClick` will be used
+   * @returns ProjectTags react component
+   */
+  const { project, onTagClick } = props;
   return (
     <div>
       {project.tags.map((tag: string, index: number) => (
@@ -36,8 +77,16 @@ const ProjectTags = ({ project, onTagClick }: any) => {
   );
 };
 
-const ProjectEulerSolutionsButton = ({ project }: any) => {
-  // Button for link to main Project Euler solutions page
+const ProjectEulerSolutionsButton = ({ project }: IOnlyProject) => {
+  /**
+   * Button for link to main Project Euler solutions page.
+   *
+   * @remarks
+   * This component is only intended to be used by ProjectCard component.
+   *
+   * @param project - Project object which may or may not be Project Euler project
+   * @returns Button to Project Euler solutions if "project euler" is in `project.name`
+   */
   if (project.name.toLowerCase().includes("project euler")) {
     return (
       <>
@@ -51,8 +100,16 @@ const ProjectEulerSolutionsButton = ({ project }: any) => {
   }
 };
 
-const ProjectDocsButton = ({ project }: any) => {
-  // Button for link to documentation of project
+const ProjectDocsButton = ({ project }: IOnlyProject) => {
+  /**
+   * Button for link to documentation of project.
+   *
+   * @remarks
+   * This component is only intended to be used by ProjectCard component.
+   *
+   * @param project - Project object for which doc button may or may not exist
+   * @returns Button that links to project docs if they exist
+   */
   if (project.hasOwnProperty("docs")) {
     return (
       <Button
@@ -69,5 +126,3 @@ const ProjectDocsButton = ({ project }: any) => {
     return null;
   }
 };
-
-export default ProjectCard;
