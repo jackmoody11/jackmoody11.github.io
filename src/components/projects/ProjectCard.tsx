@@ -40,9 +40,11 @@ const ProjectEulerSolutionsButton = ({ project }: any) => {
   // Button for link to main Project Euler solutions page
   if (project.name.toLowerCase().includes("project euler")) {
     return (
-      <Link to="/euler" className="btn btn-primary mr-1">
-        Solutions
-      </Link>
+      <>
+        <Button as="a" href="/euler" variant="primary">
+          Solutions
+        </Button>{" "}
+      </>
     );
   } else {
     return <></>;
@@ -53,14 +55,15 @@ const ProjectDocsButton = ({ project }: any) => {
   // Button for link to documentation of project
   if (project.hasOwnProperty("docs")) {
     return (
-      <a
-        href={project.docs}
-        className="btn btn-primary"
-        target="_blank"
+      <Button
+        as="a"
         rel="noopener noreferrer"
+        target="_blank"
+        variant="primary"
+        href={project.docs}
       >
         Docs
-      </a>
+      </Button>
     );
   } else {
     return null;

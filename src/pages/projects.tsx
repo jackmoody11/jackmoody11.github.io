@@ -1,17 +1,10 @@
 import React from "react";
 import { projects } from "../content/projects.json";
 import ProjectCard from "../components/projects/ProjectCard";
+import Project from "../components/projects/Project";
 import Layout from "../components/Layout";
+import Badge from "react-bootstrap/Badge";
 import "../styles/styles.sass";
-
-interface Project {
-  name: string;
-  description: string;
-  tags: string[];
-  url: string;
-  docs?: string;
-  starred: boolean;
-}
 
 interface ProjectPageState {
   filters: string[];
@@ -69,14 +62,10 @@ export default class ProjectPage extends React.Component {
         <div className="mb-3" id="tag-filters">
           {this.state.filters.map((filter: any, index: number) => (
             <>
-              <span
-                className="badge badge-light p-1 m-1"
-                onClick={this.removeFilter}
-                key={`filter-${index}`}
-              >
+              <Badge variant="light" onClick={this.removeFilter} key={index}>
                 {filter}
                 <i className="far fa-times-circle p-1 close-btn"></i>
-              </span>
+              </Badge>
             </>
           ))}
         </div>
