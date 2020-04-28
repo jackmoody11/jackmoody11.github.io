@@ -74,7 +74,7 @@ export default class ProjectPage extends React.Component {
             <ProjectCard
               project={project}
               onFilterClick={this.addFilter}
-              key={`project-${index}`}
+              key={index}
             />
           ))}
         </div>
