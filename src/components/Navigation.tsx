@@ -2,7 +2,6 @@ import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
-import { Link } from "gatsby";
 
 import LogoSVG from "../static/jackmoody_logo.svg";
 
@@ -23,6 +22,7 @@ export default () => (
         <Nav className="mr-auto">
           <Nav.Link href="/projects">Projects</Nav.Link>
           <Nav.Link href="/blog">Blog</Nav.Link>
+          <Nav.Link href="/euler">Project Euler</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Container>
