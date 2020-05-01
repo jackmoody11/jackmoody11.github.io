@@ -6,9 +6,9 @@ import footerStyles from "./footer.module.sass";
 
 export default () => {
   return (
-    <footer className={footerStyles.footer}>
+    <footer className={`align-items-center ${footerStyles.footer}`}>
       <Container>
-        <Row className="d-flex">
+        <Row>
           <Col xs={{ span: 6 }} className="text-left">
             <span className="text-muted">&copy; Jack Moody 2020</span>
           </Col>
