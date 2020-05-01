@@ -9,9 +9,15 @@ interface IHead {
   title: string;
   lang?: string;
   description: string;
+  requiresFontAwesome?: boolean;
 }
 
-const Head = ({ title, lang = "en", description }: IHead) => {
+export default ({
+  title,
+  lang = "en",
+  description,
+  requiresFontAwesome = true,
+}: IHead) => {
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -65,19 +71,24 @@ const Head = ({ title, lang = "en", description }: IHead) => {
         name="description"
         content="Jack Moody is a student at the University of North Carolina - Chapel Hill. See some of his work here."
       />
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
-      />
-      <link
-        rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-        crossOrigin="anonymous"
-      />
+      <FontAwesomeLink required={requiresFontAwesome} />
       <link rel="icon" href={Logo} />
     </Helmet>
   );
 };
 
-export default Head;
+interface IFontAwesomeLink {
+  required: boolean;
+}
+const FontAwesomeLink = ({ required }: IFontAwesomeLink) => {
+  if (required) {
+    return (
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+      />
+    );
+  } else {
+    return null;
+  }
+};
