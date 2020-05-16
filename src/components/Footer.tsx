@@ -3,7 +3,7 @@ import footerStyles from "./footer.module.sass";
 
 export default () => {
   return (
-    <footer className={"mt-2 " + footerStyles.footer}>
+    <footer className={footerStyles.footer}>
       <div className="row text-center">
         <div className="col-6 offset-3">
           <span className="text-muted">&copy; Jack Moody 2020</span>
@@ -15,7 +15,7 @@ export default () => {
             className="mr-3"
             rel="noopener noreferrer"
           >
-            <i className="fab fa-github"></i>
+            <i className="fab fa-github" title="GitHub"></i>
           </a>
           <a
             href="https://linkedin.com/in/jacklmoody"
@@ -23,7 +23,7 @@ export default () => {
             className="mr-3"
             rel="noopener noreferrer"
           >
-            <i className="fab fa-linkedin"></i>
+            <i className="fab fa-linkedin" title="LinkedIn"></i>
           </a>
           <a
             href="https://stackoverflow.com/users/8206432/jack-moody"
@@ -31,7 +31,7 @@ export default () => {
             className="mr-3"
             rel="noopener noreferrer"
           >
-            <i className="fab fa-stack-overflow"></i>
+            <i className="fab fa-stack-overflow" title="Stack Overflow"></i>
           </a>
         </div>
       </div>
