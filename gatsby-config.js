@@ -7,10 +7,14 @@ module.exports = {
     siteUrl: `https://jack-moody.com`,
     description: "Learn more about Jack Moody. A UNC-Chapel Hill graduate.",
     hero: {
-      heading: `Perspectives on technology, design and business from the team at Narative.`,
+      heading: `My take on programming, finance, and more.`,
       maxWidth: 652,
     },
     social: [
+      {
+        name: `stackoverflow`,
+        url: `https://stackoverflow.com/users/8206432/jack-moody`,
+      },
       {
         name: `github`,
         url: `https://github.com/jackmoody11`,
@@ -27,7 +31,7 @@ module.exports = {
         authorsPage: true,
         authorsPath: "/authors",
         rootPath: "/",
-        basePath: "/blog",
+        basePath: "/",
         pageLength: 6,
         sources: {
           local: true,
