@@ -1,7 +1,7 @@
 - name: Jack Moody
   bio: |
     Written by Jack Moody.
-  avatar: ./avatars/jack-avatar.jpg
+  avatar: ./avatars/jack-avatar.jpeg
   featured: true
   social:
     - url: https://stackoverflow.com/users/8206432/jack-moody
