@@ -1,0 +1,32 @@
+---
+title: Mocking with d6tflow
+author: Jack Moody
+date: 2020-10-25
+hero: ./pipeline.jpg
+excerpt: Use mocks to test d6tflow pipelines.
+---
+
+## Intro to d6tflow
+
+Recently I was introduced to the concept of data science pipelines.
+In data science workflows (for machine learning, especially),
+there are many different steps where data is transformed, cleaned, and prepared
+for training. Stringing a sequence of functions can be very messy, and what if you
+need to tweak your data just a bit? Will you have to go back through all of your
+functions to change that one parameter?
+
+If you are working with large datasets, it may also take some time to run all of the
+code to clean your data from scratch. It would be nice to have a way to save intermediate
+data and load it.
+
+The d6tflow package offers the ability to take care of this for you. If you are familiar with the [luigi](https://github.com/spotify/luigi) project by Spotify
+and are wondering how you might apply a similar workflow to data science, give d6tflow a try. Go check out the [d6tflow getting started guide](https://github.com/d6t/d6tflow/blob/master/docs/example-ml.md)
+or take a look at the [documentation](https://d6tflow.readthedocs.io/en/latest/index.html) to get familiar with the package.
+That is the end of my short plug for d6tflow. I will assume some basic knowledge of d6tflow for this article.
+
+## What are Mocks?
+
+A lot of times, when you are working with data science pipelines, you are going to have a lot of data. However, you don't
+need all of that data to test the functionality of tasks in your d6tflow pipeline.
+
+To see how mocks work in action, let's consider a concrete example. Say we want to
