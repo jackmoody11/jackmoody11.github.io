@@ -1,0 +1,207 @@
+---
+title: Using d6tflow in Python to Simplify Data Science Pipelines and Develop Faster
+author: Jack Moody
+date: 2020-11-09
+hero: ./data-has-a-better-idea.jpg
+excerpt: Clean your data science pipelines and develop faster with d6tflow.
+---
+
+## Data Science: A Quick Overview
+
+At a basic level, the data science process looks something like this:
+
+![Data Science Process](./data-science-process.png)
+
+- Start with hypothesis or problem to solve
+- Source raw data to help solve problem/investigate hypothesis
+- Clean data into a usable format
+- Explore data to understand what you are working with
+- Analyze and model data to try to find relationships between variables
+- Make conclusions about your findings (or lack thereof)
+
+Python has become a popular language for data science as a result of its simple syntax, object-oriented
+nature, and amazing open-source community. However, Python on its own does not lend itself well to data
+science. That is where the power of open-source projects such as `pandas`, `numpy`, `sklearn`, and countless
+other projects come into play.
+
+## Predicting Boston House Prices: The Hard Way
+
+A basic data science workflow might look something like this:
+
+```python
+import pandas as pd
+from sklearn.datasets import load_boston
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+
+# Load data
+boston = load_boston()
+X = pd.DataFrame(boston.data, columns=boston.feature_names)
+y = pd.DataFrame(boston.target, columns=['Price'])
+
+# Break into training and testing data
+X_train, X_test, y_train, y_test = train_test_split(X, y)
+
+# Model data
+reg = LinearRegression()
+reg.fit(X_train, y_train)
+
+# Test model
+reg.score(X_test, y_test)
+```
+
+The code above is great for short data science pipelines. However, you probably want to do more than just try
+a linear regression model. There are lots of different model types that could be fitted to this data. How can we
+change the code above to run a SVM regression or a decision tree regression?
+
+Well, that isn't too bad. We just add the following few lines:
+
+```python
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.svm import SVR
+
+# Model data
+reg_dt = DecisionTreeRegressor()
+reg_svr = SVR()
+
+reg_dt.fit(X_train, y_train)
+reg_svr.fit(X_train, y_train)
+
+# Test models
+reg_dt.score(X_test, y_test)
+reg_svr.score(X_test, y_test)
+```
+
+The code above is quickly starting to look repetitive. Let's make functions to reduce our code duplication.
+
+```python
+def train_and_score(model, X_train, y_train, X_test, y_test):
+    model.fit(X_train, y_train)
+    return model.score(X_test, y_test)
+
+train_and_score(LinearRegression(), X_train, y_train, X_test, y_test)
+train_and_score(DecisionTreeRegressor(), X_train, y_train, X_test, y_test)
+train_and_score(SVR(), X_train, y_train, X_test, y_test)
+```
+
+Now what if we want to change which combination of features we are testing. For example, let's say we want to
+limit our features to property tax per \$10k (TAX), per capita crime rate (CRIM), and average number of rooms
+per dwelling (RM).
+
+Now we have to go back to when we loaded our data and do the following:
+
+```python
+X = pd.DataFrame(boston.data, columns=boston.feature_names)
+X = X[['TAX', 'CRIM', 'RM']]
+```
+
+This isn't bad if we are just trying out a few combinations of features; however, what if it took a long time
+to get to load our `X` variable, because we were pulling it from an external API? Even for only a few combinations
+of features, you would need to load `X` every time you used a new combination of features or save it somewhere using
+code like this:
+
+```python
+def load_features():
+    if os.path.exists('/path/to/features.csv'):
+        with open('path/to/features.csv') as f:
+            X = pd.read_csv(f)
+    else:
+        boston = load_boston()
+        X = pd.DataFrame(boston.data, columns=boston.feature_names)
+```
+
+This is becoming messy quickly. It would be nice if we didn't have to manually specify where to save data we had already
+collected or manipulated that could be used later on independent of what model or data manipulation we did later.
+
+In order to avoid repetitive code and running the same tasks over and over again, we can use `d6tflow`.
+
+## Predicting Boston House Prices: The Easy Way
+
+We can break down the pipeline we created the hard way above into 3 separate tasks.
+
+1. Load data
+2. Model data
+3. Test model(s)
+
+The `d6tflow` library provides us with a convenient OOP way of doing this and saving our outputs along the way
+so that we don't run the same calculations again if we don't need to.
+
+First, we will import the modules we will need:
+
+```python
+import d6tflow
+import luigi
+import pandas as pd
+from sklearn.datasets import load_boston
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.svm import SVR
+```
+
+In our first task, we load our data. We use `persist` to tell `d6tflow` what variable names
+will need to persist across tasks since we are saving more than one pandas data frame (which will create
+multiple parquet files).
+
+```python
+class LoadData(d6tflow.tasks.TaskPqPandas): # Save pandas outputs to parquet files
+    persist = ['X_train', 'X_test', 'y_train', 'y_test']
+    def run(self):
+        boston = load_boston()
+        X = pd.DataFrame(boston.data, columns=boston.feature_names)
+        y = pd.DataFrame(boston.target, columns=['Price'])
+        X_train, X_test, y_train, y_test = train_test_split(X, y)
+        self.save({'X_train': X_train, 'X_test': X_test,
+                   'y_train': y_train, 'y_test': y_test})
+```
+
+In our second task, we require that our first task has run and then load that data to fit our model.
+To provide flexibility to which model we will use, we will add a `luigi` parameter. The `luigi` library
+was made by Spotify to build complex data pipelines. By using `d6tflow`, we remove a lot of the boilerplate
+code from `luigi`.
+
+```python
+@d6tflow.requires(LoadData)
+class ModelData(d6tflow.tasks.TaskPickle):
+    model = luigi.Parameter(default=LinearRegression())
+
+    def run(self):
+        X_train = self.input()['X_train'].load()
+        y_train = self.input()['y_train'].load()
+        self.model.fit(X_train, y_train)
+        self.save(self.model)
+```
+
+Finally, we fit our data to our model.
+
+```python
+@d6tflow.requires(LoadData, ModelData)
+class TestModel(d6tflow.tasks.TaskPickle):
+    def run(self):
+        X_test = self.input()['X_test'].load()
+        y_test = self.input()['y_test'].load()
+
+        # Using requires decorator inherits model from upstream task (ModelData)
+        score = self.model.score(X_test, y_test)
+        self.save(score)
+```
+
+Now, to run our model we simply need to call `d6tflow.run()`. To see the result, we can
+use the `outputLoad()` method.
+
+```python
+task = TestModel() # Uses linear regression as default
+d6tflow.run(task)
+score = task.outputLoad()
+print("Score is", round(score, 4))
+```
+
+Now it is extremely simple to switch which model we use. And, as an added bonus, we don't even have to run the
+data loading task again. We can simply load the results from memory. Here is how simple it is to change which model
+we use for our regression:
+
+```python
+task = TestModel(model=SVR()) # Choose any sklearn regressor
+```
+
+### Conclusion
