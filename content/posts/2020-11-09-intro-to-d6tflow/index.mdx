@@ -111,7 +111,7 @@ def load_features():
 ```
 
 This is becoming messy quickly. It would be nice if we didn't have to manually specify where to save data we had already
-collected or manipulated that could be used later on independent of what model or data manipulation we did later.
+collected or manipulated.
 
 In order to avoid repetitive code and running the same tasks over and over again, we can use `d6tflow`.
 
@@ -144,13 +144,17 @@ will need to persist across tasks since we are saving more than one pandas data 
 multiple parquet files).
 
 ```python
-class LoadData(d6tflow.tasks.TaskPqPandas): # Save pandas outputs to parquet files
+# Save pandas outputs to parquet files
+class LoadData(d6tflow.tasks.TaskPqPandas):
+    # So that you get the same results
+    seed = luigi.IntParameter(default=0)
+
     persist = ['X_train', 'X_test', 'y_train', 'y_test']
     def run(self):
         boston = load_boston()
         X = pd.DataFrame(boston.data, columns=boston.feature_names)
         y = pd.DataFrame(boston.target, columns=['Price'])
-        X_train, X_test, y_train, y_test = train_test_split(X, y)
+        X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=self.seed)
         self.save({'X_train': X_train, 'X_test': X_test,
                    'y_train': y_train, 'y_test': y_test})
 ```
@@ -168,8 +172,9 @@ class ModelData(d6tflow.tasks.TaskPickle):
     def run(self):
         X_train = self.input()['X_train'].load()
         y_train = self.input()['y_train'].load()
-        self.model.fit(X_train, y_train)
-        self.save(self.model)
+        model = self.model
+        model.fit(X_train, y_train)
+        self.save(model)
 ```
 
 Finally, we fit our data to our model.
@@ -177,16 +182,16 @@ Finally, we fit our data to our model.
 ```python
 @d6tflow.requires(LoadData, ModelData)
 class TestModel(d6tflow.tasks.TaskPickle):
-    def run(self):
-        X_test = self.input()['X_test'].load()
-        y_test = self.input()['y_test'].load()
 
-        # Using requires decorator inherits model from upstream task (ModelData)
-        score = self.model.score(X_test, y_test)
+    def run(self):
+        X_test = self.input()[0]['X_test'].load()
+        y_test = self.input()[0]['y_test'].load()
+        model = self.input()[1].load()
+        score = model.score(X_test, y_test)
         self.save(score)
 ```
 
-Now, to run our model we simply need to call `d6tflow.run()`. To see the result, we can
+Now, to run our model we simply need to call the `run()` method from `d6tflow`. To load the result, we can
 use the `outputLoad()` method.
 
 ```python
@@ -196,12 +201,27 @@ score = task.outputLoad()
 print("Score is", round(score, 4))
 ```
 
+> Score is 0.6355
+
 Now it is extremely simple to switch which model we use. And, as an added bonus, we don't even have to run the
 data loading task again. We can simply load the results from memory. Here is how simple it is to change which model
 we use for our regression:
 
 ```python
-task = TestModel(model=SVR()) # Choose any sklearn regressor
+# Choose a sklearn regressor
+task = TestModel(model=DecisionTreeRegressor())
 ```
 
+After running the decision tree regressor model and printing the score output, we get
+
+> Score is 0.6523
+
+That was a really easy way to swap out models! Of course, with any programming project, the benefits from the minimal `d6tflow` boilerplate code are typically
+not recognized until you are a few hundred lines into your machine learning project/data science pipeline.
+However, if you are pulling lots of data from an external data source writing the `LoadData` task alone will save you time, as your data will be saved and ready for use by all downstream tasks.
+
 ### Conclusion
+
+Many beginner data science articles string together commands in one file, because it is simple. However, in real-world scenarios, you will quickly find that this approach does not scale.
+The `d6tflow` library helps solve this problem while adding only a minimal amount of boilerplate code. Further, the time spent on writing the boilerplate code makes your pipeline
+extremely flexible and will speed up your fine-tuning of your model tremendously.
