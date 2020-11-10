@@ -1,12 +1,9 @@
 {
-  "projects": [{
+  "projects": [
+    {
       "name": "Stock Score",
       "description": "A Python project to fetch stock financials/statistics and perform preliminary screens to aid in the stock selection process.",
-      "tags": [
-        "Python",
-        "Finance",
-        "Pandas"
-      ],
+      "tags": ["Python", "Finance", "Pandas"],
       "url": "https://github.com/jackmoody11/stockscore",
       "docs": "https://jack-moody.com/stockscore",
       "starred": false
@@ -14,12 +11,7 @@
     {
       "name": "SEC Edgar",
       "description": "Download all companies periodic reports, filings and forms from EDGAR database.",
-      "tags": [
-        "Python",
-        "Finance",
-        "Scraping",
-        "BeautifulSoup"
-      ],
+      "tags": ["Python", "Finance", "Scraping", "BeautifulSoup", "Pytest"],
       "url": "https://github.com/jackmoody11/sec-edgar",
       "docs": "https://rudrakos.com/sec-edgar/",
       "starred": false
@@ -31,7 +23,8 @@
         "Java",
         "Cellular Automation",
         "Multithreading",
-        "Swing"
+        "Swing",
+        "JUnit"
       ],
       "url": "https://github.com/jackmoody11/game-of-life",
       "starred": false
@@ -68,13 +61,14 @@
       "name": "Personal Site",
       "description": "The source code for this site.",
       "tags": [
-        "Python",
-        "Flask",
-        "Javascript",
+        "Gatsby",
+        "React",
         "AJAX",
         "HTML",
         "CSS",
-        "Bootstrap 4"
+        "Bootstrap 4",
+        "Typescript",
+        "Jest"
       ],
       "url": "https://github.com/jackmoody11/jackmoody11.github.io",
       "starred": false
@@ -82,12 +76,7 @@
     {
       "name": "Auto DCF",
       "description": "Easy plug-and-chug discounted cash flow model framework that allows for advanced modeling and sensitivity tests.",
-      "tags": [
-        "Python",
-        "Pandas",
-        "Finance",
-        "Numpy"
-      ],
+      "tags": ["Python", "Pandas", "Finance", "Numpy", "Pytest"],
       "url": "https://github.com/jackmoody11/autodcf",
       "docs": "https://jack-moody.com/autodcf/",
       "starred": false

@@ -1,0 +1,8 @@
+- name: Jack Moody
+  bio: |
+    University of North Carolina - Chapel Hill alumnus. Interested in data-driven decisions, using programming to improve productivity, and the financial markets.
+  avatar: ./avatars/jack-avatar.jpeg
+  featured: true
+  social:
+    - url: https://stackoverflow.com/users/8206432/jack-moody
+    - url: https://github.com/jackmoody11
