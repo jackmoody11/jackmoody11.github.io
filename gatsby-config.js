@@ -12,18 +12,20 @@ module.exports = {
     },
     social: [
       {
-        name: `stackoverflow`,
-        url: `https://stackoverflow.com/users/8206432/jack-moody`,
+        name: `linkedin`,
+        url: `https://www.linkedin.com/in/jacklmoody`
       },
       {
         name: `github`,
         url: `https://github.com/jackmoody11`,
       },
+      {
+        name: `stackoverflow`,
+        url: `https://stackoverflow.com/users/8206432/jack-moody`,
+      }
     ],
   },
   plugins: [
-    "gatsby-plugin-sass",
-    "gatsby-plugin-react-helmet",
     "gatsby-plugin-typescript",
     {
       resolve: "@narative/gatsby-theme-novela",
@@ -36,13 +38,6 @@ module.exports = {
         sources: {
           local: true,
         },
-      },
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        path: `${__dirname}/src/content/euler`,
-        name: "euler",
       },
     },
     "gatsby-plugin-sharp",
