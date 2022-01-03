@@ -12,13 +12,17 @@ module.exports = {
     },
     social: [
       {
-        name: `stackoverflow`,
-        url: `https://stackoverflow.com/users/8206432/jack-moody`,
+        name: `linkedin`,
+        url: `https://www.linkedin.com/in/jacklmoody`
       },
       {
         name: `github`,
         url: `https://github.com/jackmoody11`,
       },
+      {
+        name: `stackoverflow`,
+        url: `https://stackoverflow.com/users/8206432/jack-moody`,
+      }
     ],
   },
   plugins: [
