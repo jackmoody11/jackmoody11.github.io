@@ -5,8 +5,5 @@
 
 This is the repo for my personal website. This site uses the following technologies:
 
-- React.js
 - Gatsby.js
-- Typescript
-- Bootstrap 4
 - GitHub Pages

@@ -22,8 +22,6 @@ module.exports = {
     ],
   },
   plugins: [
-    "gatsby-plugin-sass",
-    "gatsby-plugin-react-helmet",
     "gatsby-plugin-typescript",
     {
       resolve: "@narative/gatsby-theme-novela",
@@ -36,13 +34,6 @@ module.exports = {
         sources: {
           local: true,
         },
-      },
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        path: `${__dirname}/src/content/euler`,
-        name: "euler",
       },
     },
     "gatsby-plugin-sharp",
